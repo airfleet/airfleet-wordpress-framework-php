@@ -1,8 +1,8 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Menu;
+namespace Airfleet\Framework\Options\Menu;
 
-class AirfleetMenuEntry implements \Airfleet\Plugins\Admin\Feature {
+class AirfleetMenuEntry implements \Airfleet\Framework\Feature {
 	/**
 	 * Menu data. See methods add_menu_item and add_submenu_item for expected data.
 	 *

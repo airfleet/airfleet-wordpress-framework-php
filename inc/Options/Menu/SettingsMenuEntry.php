@@ -1,11 +1,11 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Menu;
+namespace Airfleet\Framework\Options\Menu;
 
 /**
  * Add a menu item under the standard "Settings" menu.
  */
-class SettingsMenuEntry implements \Airfleet\Plugins\Admin\Feature {
+class SettingsMenuEntry implements \Airfleet\Framework\Feature {
 	/**
 	 * Menu data. See methods add_menu_item and add_submenu_item for expected data.
 	 *

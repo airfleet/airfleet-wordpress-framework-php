@@ -1,11 +1,11 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Menu;
+namespace Airfleet\Framework\Options\Menu;
 
 /**
  * Add a main menu item.
  */
-class MainMenuEntry implements \Airfleet\Plugins\Admin\Feature {
+class MainMenuEntry implements \Airfleet\Framework\Feature {
 	/**
 	 * Menu data. See methods add_menu_item and add_submenu_item for expected data.
 	 *

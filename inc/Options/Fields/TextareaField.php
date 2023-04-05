@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Fields;
+namespace Airfleet\Framework\Options\Fields;
 
 class TextareaField extends Field {
 	protected function render_input( array $args, mixed $value ): void {

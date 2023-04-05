@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Fields;
+namespace Airfleet\Framework\Options\Fields;
 
 class CheckboxField extends InputField {
 	public function __construct( string $id, string $title, array $args = [] ) {

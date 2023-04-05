@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Pages;
+namespace Airfleet\Framework\Options\Pages;
 
 class AirfleetMenuTabsPage extends MenuTabsPage {
 	public function __construct( array $args ) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Fields;
+namespace Airfleet\Framework\Options\Fields;
 
 class EncrypytedPasswordField extends PasswordField {
 	protected string $encryption_key;

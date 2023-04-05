@@ -1,8 +1,8 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options;
+namespace Airfleet\Framework\Options;
 
-use Airfleet\Plugins\Admin\Options\Fields\Field;
+use Airfleet\Framework\Options\Fields\Field;
 
 /**
  * A group of fields.

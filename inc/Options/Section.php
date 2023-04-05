@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options;
+namespace Airfleet\Framework\Options;
 
 /**
  * A section that separates fields.

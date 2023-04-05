@@ -1,8 +1,8 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Pages;
+namespace Airfleet\Framework\Options\Pages;
 
-use Airfleet\Plugins\Admin\Options\Tabs\Tab;
+use Airfleet\Framework\Options\Tabs\Tab;
 
 /**
  * A page with several tabs.

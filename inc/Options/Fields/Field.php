@@ -1,8 +1,8 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Fields;
+namespace Airfleet\Framework\Options\Fields;
 
-use Airfleet\Plugins\Admin\Options\Group;
+use Airfleet\Framework\Options\Group;
 
 abstract class Field {
 	protected string $id;

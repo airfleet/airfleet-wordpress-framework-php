@@ -1,9 +1,9 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options;
+namespace Airfleet\Framework\Options;
 
-use Airfleet\Plugins\Admin\Options\Fields\Field;
-use Airfleet\Plugins\Admin\Options\Fields;
+use Airfleet\Framework\Options\Fields\Field;
+use Airfleet\Framework\Options\Fields;
 
 /**
  * Easy way to generate the options.

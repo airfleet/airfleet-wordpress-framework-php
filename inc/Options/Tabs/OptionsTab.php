@@ -1,8 +1,8 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Tabs;
+namespace Airfleet\Framework\Options\Tabs;
 
-use Airfleet\Plugins\Admin\Options\Group;
+use Airfleet\Framework\Options\Group;
 
 class OptionsTab extends Tab {
 	protected string $id;

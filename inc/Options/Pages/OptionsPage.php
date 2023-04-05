@@ -1,10 +1,10 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Pages;
+namespace Airfleet\Framework\Options\Pages;
 
-use Airfleet\Plugins\Admin\Options\Group;
-use Airfleet\Plugins\Admin\Options\Tabs\Tab;
-use Airfleet\Plugins\Admin\Options\Tabs\OptionsTab;
+use Airfleet\Framework\Options\Group;
+use Airfleet\Framework\Options\Tabs\Tab;
+use Airfleet\Framework\Options\Tabs\OptionsTab;
 
 /**
  * A single page of options.

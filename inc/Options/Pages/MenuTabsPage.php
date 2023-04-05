@@ -1,13 +1,13 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Pages;
+namespace Airfleet\Framework\Options\Pages;
 
-use Airfleet\Plugins\Admin\Feature;
-use Airfleet\Plugins\Admin\Options\Pages\Page;
-use Airfleet\Plugins\Admin\Options\Pages\TabsPage;
-use Airfleet\Plugins\Admin\Options\Menu\AirfleetMenuEntry;
-use Airfleet\Plugins\Admin\Options\Menu\SettingsMenuEntry;
-use Airfleet\Plugins\Admin\Options\Menu\MainMenuEntry;
+use Airfleet\Framework\Feature;
+use Airfleet\Framework\Options\Pages\Page;
+use Airfleet\Framework\Options\Pages\TabsPage;
+use Airfleet\Framework\Options\Menu\AirfleetMenuEntry;
+use Airfleet\Framework\Options\Menu\SettingsMenuEntry;
+use Airfleet\Framework\Options\Menu\MainMenuEntry;
 
 class MenuTabsPage implements Feature {
 	protected Page $page;

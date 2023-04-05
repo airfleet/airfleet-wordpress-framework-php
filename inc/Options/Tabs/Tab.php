@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Plugins\Admin\Options\Tabs;
+namespace Airfleet\Framework\Options\Tabs;
 
 class Tab {
 	protected string $id;
