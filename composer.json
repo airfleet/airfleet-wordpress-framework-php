@@ -1,0 +1,25 @@
+{
+  "name": "airfleet/wordpress-framework",
+  "type": "library",
+  "description": "Airfleet framework for WordPress",
+  "authors": [
+    {
+      "name": "Airfleet",
+      "email": "dev@airfleet.co"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "composer/installers": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Airfleet\\Framework\\": "inc/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+    }
+  }
+}
