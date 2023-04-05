@@ -11,3 +11,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Created package
 - Added Options utilities
+- Added Features classes
