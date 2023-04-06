@@ -1,0 +1,44 @@
+name: 📦 Release (GitHub)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+
+      - name: 🔨 Install release dependencies
+        run: npm install -g release-it@^15 @release-it/keep-a-changelog@^3
+
+      - name: 🔨 Config git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: 📦 Release
+        run: npx release-it $(cat .airfleet-release)
+          --verbose
+          --ci
+          --git.pushArgs='--follow-tags'
+          --git.pushArgs='-o ci.skip'
+          --no-npm.publish
+          --github.release
+          --plugins.@release-it/keep-a-changelog.filename=CHANGELOG.md
+          --no-plugins.@release-it/keep-a-changelog.strictLatest
+          --plugins.@release-it/keep-a-changelog.addUnreleased
+          --plugins.@release-it/keep-a-changelog.addVersionUrl
+          --plugins.@release-it/keep-a-changelog.head=main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
