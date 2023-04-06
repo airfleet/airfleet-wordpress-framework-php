@@ -2,7 +2,7 @@
 
 namespace Airfleet\Framework\Options\Pages;
 
-use Airfleet\Framework\Feature;
+use Airfleet\Framework\Features\Feature;
 use Airfleet\Framework\Options\Pages\Page;
 use Airfleet\Framework\Options\Pages\TabsPage;
 use Airfleet\Framework\Options\Menu\AirfleetMenuEntry;

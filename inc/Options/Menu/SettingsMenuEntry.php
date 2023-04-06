@@ -5,7 +5,7 @@ namespace Airfleet\Framework\Options\Menu;
 /**
  * Add a menu item under the standard "Settings" menu.
  */
-class SettingsMenuEntry implements \Airfleet\Framework\Feature {
+class SettingsMenuEntry implements \Airfleet\Framework\Features\Feature {
 	/**
 	 * Menu data. See methods add_menu_item and add_submenu_item for expected data.
 	 *

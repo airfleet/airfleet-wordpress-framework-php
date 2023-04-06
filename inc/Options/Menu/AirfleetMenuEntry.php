@@ -2,7 +2,7 @@
 
 namespace Airfleet\Framework\Options\Menu;
 
-class AirfleetMenuEntry implements \Airfleet\Framework\Feature {
+class AirfleetMenuEntry implements \Airfleet\Framework\Features\Feature {
 	/**
 	 * Menu data. See methods add_menu_item and add_submenu_item for expected data.
 	 *

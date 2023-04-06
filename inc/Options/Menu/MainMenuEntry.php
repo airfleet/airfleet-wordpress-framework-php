@@ -5,7 +5,7 @@ namespace Airfleet\Framework\Options\Menu;
 /**
  * Add a main menu item.
  */
-class MainMenuEntry implements \Airfleet\Framework\Feature {
+class MainMenuEntry implements \Airfleet\Framework\Features\Feature {
 	/**
 	 * Menu data. See methods add_menu_item and add_submenu_item for expected data.
 	 *

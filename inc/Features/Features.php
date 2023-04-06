@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Framework;
+namespace Airfleet\Framework\Features;
 
 class Features implements Feature {
 	protected array $features;
