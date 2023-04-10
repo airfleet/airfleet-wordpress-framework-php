@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Framework\Assets;
+namespace Airfleet\Framework\Plugin;
 
 use Airfleet\Framework\Features\Feature;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Airfleet\Framework\Assets;
+namespace Airfleet\Framework\Plugin;
 
 /**
  * Adds a plugin Settings link in the plugin row in the admin plugins list.
