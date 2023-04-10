@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Added enqueue utilities
+- Added enqueue utilities (Assets\Enqueue)
+- Added inline script and variables utilities (Assets\InlineScript, Assets\ScriptVariables, Assets\FrontendVariables, Assets\EditorVariables, Assets\AdminVariables, Assets\CriticalVariables)
 
 ## [0.1.0] - 2023-04-06
 
