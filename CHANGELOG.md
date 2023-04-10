@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added enqueue utilities
+
 ## [0.1.0] - 2023-04-06
 
 ### Added
