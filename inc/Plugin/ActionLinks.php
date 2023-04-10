@@ -53,7 +53,7 @@ class ActionLinks implements Feature {
 					return $plugin_actions;
 				}
 
-				return array_merge( $plugin_actions, $this->action_links() );
+				return array_merge( $this->action_links(), $plugin_actions );
 			},
 			10,
 			2
