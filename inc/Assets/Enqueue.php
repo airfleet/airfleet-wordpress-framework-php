@@ -249,6 +249,7 @@ class Enqueue implements Feature {
 		}
 
 		if ( is_callable( $this->enqueue[ $key ] ) ) {
+			// phpcs:ignore NeutronStandard.Functions.DisallowCallUserFunc.CallUserFunc
 			return call_user_func( $this->enqueue[ $key ] );
 		}
 

@@ -18,7 +18,7 @@ class ScriptVariables extends InlineScript {
 	 *
 	 * @var array
 	 */
-	protected array $variables;
+	protected mixed $variables;
 
 	/**
 	 * Constructor.
@@ -29,7 +29,7 @@ class ScriptVariables extends InlineScript {
 	 *  position  => (string) "before" or "after". Optional (default is "before")
 	 *  priority  => (int) Priority for the action. Optional (default is 10)
 	 *  name      => (string) The name of the window variable
-	 *  variables => (array) The content for the window variable. Will be converted to JS object
+	 *  variables => (array|callable) The content for the window variable. Will be converted to JS object
 	 */
 	public function __construct( array $options ) {
 		parent::__construct(
@@ -46,6 +46,15 @@ class ScriptVariables extends InlineScript {
 	}
 
 	protected function script(): string {
-		return "window.{$this->name} = " . wp_json_encode( $this->variables ) . ';';
+		return "window.{$this->name} = " . wp_json_encode( $this->js_content() ) . ';';
+	}
+
+	protected function js_content(): array {
+		if ( is_callable( $this->variables ) ) {
+			// phpcs:ignore NeutronStandard.Functions.DisallowCallUserFunc.CallUserFunc
+			return call_user_func( $this->variables );
+		}
+
+		return $this->variables;
 	}
 }
