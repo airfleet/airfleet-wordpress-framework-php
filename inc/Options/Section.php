@@ -24,7 +24,7 @@ class Section {
 		if ( ! $this->is_visible() ) {
 			return;
 		}
-		\add_settings_section(
+		add_settings_section(
 			$this->id,
 			$this->title,
 			[ $this, 'render' ],

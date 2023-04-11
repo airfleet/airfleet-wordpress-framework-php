@@ -98,7 +98,7 @@ class Wizard {
 		}
 
 		if ( isset( $args['title'] ) ) {
-			return \sanitize_title( $args['title'] );
+			return sanitize_title( $args['title'] );
 		}
 
 		throw new \Exception( 'Missing ID field' );

@@ -70,7 +70,7 @@ abstract class Field {
 		$this->group = $group;
 
 		if ( $this->is_visible() ) {
-			\add_settings_field(
+			add_settings_field(
 				$this->id,
 				$this->title,
 				function ( array $args ): void {

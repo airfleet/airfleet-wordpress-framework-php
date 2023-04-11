@@ -9,7 +9,7 @@ class AirfleetImplementation {
 	 * @return boolean
 	 */
 	public function is_starter_theme(): bool {
-		return function_exists( '\af_field' );
+		return function_exists( 'af_field' );
 	}
 
 	/**
@@ -18,7 +18,7 @@ class AirfleetImplementation {
 	 * @return boolean
 	 */
 	public function is_airfleet_user(): bool {
-		if ( ! \is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 			return false;
 		}
 
