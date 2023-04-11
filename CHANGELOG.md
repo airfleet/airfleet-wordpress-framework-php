@@ -13,7 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added inline script and variables utilities (Assets\InlineScript, Assets\ScriptVariables, Assets\FrontendVariables, Assets\EditorVariables, Assets\AdminVariables, Assets\CriticalVariables)
 - Added utility to add plugin action links on the Plugins table page (Plugin\ActionLinks)
 - Added utility to add plugin settings link on the Plugins table page (Plugin\SettingsLink)
-- Added Airfleet help (Helpers\Airfleet) - detect Airfleet Starter Theme and Airfleet users
+- Added Airfleet helper (Helpers\Airfleet) - detect Airfleet Starter Theme and Airfleet users
+- Added Screen helper (Helpers\Screen) - detect current screen and post type
 
 ## [0.1.0] - 2023-04-06
 
