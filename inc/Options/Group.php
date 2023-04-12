@@ -19,7 +19,7 @@ class Group {
 	}
 
 	public function register( string $page ): void {
-		\register_setting(
+		register_setting(
 			$this->group,
 			$this->name,
 			[

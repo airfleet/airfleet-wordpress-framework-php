@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added enqueue utilities (Assets\Enqueue)
+- Added inline script and variables utilities (Assets\InlineScript, Assets\ScriptVariables, Assets\FrontendVariables, Assets\EditorVariables, Assets\AdminVariables, Assets\CriticalVariables)
+- Added utility to add plugin action links on the Plugins table page (Plugin\ActionLinks)
+- Added utility to add plugin settings link on the Plugins table page (Plugin\SettingsLink)
+- Added Airfleet helper (Helpers\Airfleet) - detect Airfleet Starter Theme, Airfleet users, and post types/taxonomies
+- Added Screen helper (Helpers\Screen) - detect current screen and post type
+- Added Assets helper (Helpers\Assets) - get asset URL and get manifest
+- Added Display helper (Helpers\Display) - pretty print, dump, and render reusable blocks
+- Added plugin feature utilities (Features\PluginFeature, Features\BasePluginFeature and Features\PluginFeatures) - extra plugin specific hooks compared to Feature (activation, deactivation, uninstall)
+- Added Hooks helper (Helper\Hooks) - remove class filter/action
+- Added Acf\LocalJson utility
+
 ## [0.1.0] - 2023-04-06
 
 ### Added
