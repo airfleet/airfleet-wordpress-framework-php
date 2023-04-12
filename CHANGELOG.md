@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Added login styles/scripts support to Assets\Enqueue
+
 ## [0.2.0] - 2023-04-12
 
 ### Added
