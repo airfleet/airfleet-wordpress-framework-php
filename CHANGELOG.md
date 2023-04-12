@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Assets helper (Helpers\Assets) - get asset URL and get manifest
 - Added Display helper (Helpers\Display) - pretty print, dump, and render reusable blocks
 - Added plugin feature utilities (Features\PluginFeature, Features\BasePluginFeature and Features\PluginFeatures) - extra plugin specific hooks compared to Feature (activation, deactivation, uninstall)
+- Added Hooks helper (Helper\Hooks) - remove class filter/action
 
 ## [0.1.0] - 2023-04-06
 
