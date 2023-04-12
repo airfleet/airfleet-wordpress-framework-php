@@ -8,5 +8,19 @@ interface PluginFeature extends Feature {
 	 *
 	 * @return void
 	 */
-	public function on_plugin_activated(): void;
+	public function on_activation(): void;
+
+	/**
+	 * Runs when the plugin is deactivated.
+	 *
+	 * @return void
+	 */
+	public function on_deactivation(): void;
+
+	/**
+	 * Runs when the plugin is uninstalled.
+	 *
+	 * @return void
+	 */
+	public function on_uninstall(): void;
 }
