@@ -3,6 +3,13 @@
 namespace Airfleet\Framework\Features;
 
 class PluginFeatures extends Features implements PluginFeature {
+	protected static $instance = null;
+
+	public function __construct( array $features ) {
+		$this->features = $features;
+		static::$instance = $this;
+	}
+
 	public function on_activation(): void {
 		foreach ( $this->features as $feature ) {
 			if ( method_exists( $feature, 'on_activation' ) ) {
@@ -25,5 +32,9 @@ class PluginFeatures extends Features implements PluginFeature {
 				$feature->on_uninstall();
 			}
 		}
+	}
+
+	public static function uninstall(): void {
+		static::$instance->on_uninstall();
 	}
 }
