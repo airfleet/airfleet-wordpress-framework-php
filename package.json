@@ -1,0 +1,26 @@
+{
+  "name": "@airfleet/wordpress-framework",
+  "version": "0.1.0",
+  "description": "Airfleet WordPress framework",
+  "scripts": {},
+  "private": true,
+  "keywords": [
+    "airfleet"
+  ],
+  "homepage": "https://www.airfleet.co",
+  "author": {
+    "name": "Airfleet",
+    "email": "dev@airfleet.co",
+    "url": "https://www.airfleet.co/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airfleet/airfleet-wordpress-framework-php.git"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "bugs": {
+    "url": "https://github.com/airfleet/airfleet-wordpress-framework-php/issues"
+  }
+}
