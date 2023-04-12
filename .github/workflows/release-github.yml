@@ -28,7 +28,7 @@ jobs:
 
       - name: 📦 Release
         run: npx release-it $(cat .airfleet-release)
-          --verbose
+          -VV
           --ci
           --git.pushArgs='--follow-tags'
           --git.pushArgs='-o ci.skip'
