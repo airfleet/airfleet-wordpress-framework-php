@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added utility to add plugin settings link on the Plugins table page (Plugin\SettingsLink)
 - Added Airfleet helper (Helpers\Airfleet) - detect Airfleet Starter Theme and Airfleet users
 - Added Screen helper (Helpers\Screen) - detect current screen and post type
+- Added Assets helper (Helpers\Assets) - get asset URL and get manifest
 
 ## [0.1.0] - 2023-04-06
 
