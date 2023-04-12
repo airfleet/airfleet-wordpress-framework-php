@@ -57,4 +57,86 @@ class AirfleetImplementation {
 			)
 		);
 	}
+
+	/**
+	 * Check if the post type is an Airfleet post type.
+	 *
+	 * @param \WP_Post_Type $post_type Post type to check.
+	 * @return boolean
+	 */
+	public function is_airfleet_post_type( \WP_Post_Type $post_type ): bool {
+		$airfleet_registered = isset( $post_type->_airfleet ) && $post_type->_airfleet;
+
+		return $airfleet_registered || $this->contains_airfleet_strings( $post_type->name );
+	}
+
+	/**
+	 * Check if the arguments are for an Airfleet post type.
+	 *
+	 * @param array $args Post type args.
+	 * @param string $post_type Post type slug.
+	 * @return boolean
+	 */
+	public function is_airfleet_post_type_args( array $args, string $post_type ): bool {
+		if ( isset( $args['_airfleet'] ) && $args['_airfleet'] ) {
+			return true;
+		}
+
+		return $this->contains_airfleet_strings( $post_type );
+	}
+
+	protected function contains_airfleet_strings( string $value ): bool {
+		if ( str_contains( $value, 'airfleet' ) ) {
+			return true;
+		}
+		$starts = [
+			'af-',
+			'af_',
+			'afe_',
+		];
+
+		foreach ( $starts as $start ) {
+			if ( str_starts_with( $value, $start ) ) {
+				return true;
+			}
+		}
+
+		if ( $value === 'cta' ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check if arguments are for an Airfleet taxonomy.
+	 *
+	 * @param array $args
+	 * @param string $taxonomy
+	 * @param array|string $object_type
+	 * @return boolean
+	 */
+	public function is_airfleet_taxonomy_args( array $args, string $taxonomy, array|string $object_type ): bool {
+		if ( isset( $args['_airfleet'] ) && $args['_airfleet'] ) {
+			return true;
+		}
+
+		if ( $this->contains_airfleet_strings( $taxonomy ) ) {
+			return true;
+		}
+
+		// For here on out, if it belongs to an Airfleet post type,
+		// then consider it an Airfleet taxonomy
+		if ( is_string( $object_type ) ) {
+			return $this->is_airfleet_post_type_args( $args, $object_type );
+		}
+
+		foreach ( $object_type as $post_type ) {
+			if ( $this->is_airfleet_post_type_args( $args, $post_type ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 }
