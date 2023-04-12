@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Screen helper (Helpers\Screen) - detect current screen and post type
 - Added Assets helper (Helpers\Assets) - get asset URL and get manifest
 - Added Display helper (Helpers\Display) - pretty print, dump, and render reusable blocks
+- Added PluginFeature and PluginFeatures - adds method on_plugin_activated() compared to Feature
 
 ## [0.1.0] - 2023-04-06
 
