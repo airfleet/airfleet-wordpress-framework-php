@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+#### Added
+
+- Added ACF options feature classes (Acf\OptionsPage, Acf\OptionsSubPage, Acf\AirfleetOptionsSubPage)
+- Added Plugin\AcfAirfleetOptionsSubPage - add ACF options sub-page under Airfleet menu based on plugin config
+- Added Plugin\AcfSettingsLink - add settings link on Plugins admin table for ACF options sub-page based on plugin config
+
 ## [0.2.1] - 2023-04-12
 
 ### Changed

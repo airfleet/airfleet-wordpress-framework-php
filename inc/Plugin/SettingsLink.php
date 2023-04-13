@@ -9,7 +9,7 @@ class SettingsLink extends ActionLinks {
 	/**
 	 * Constructor.
 	 *
-	 * @param array $options Enqueue properties.
+	 * @param array $options Plugin properties.
 	 *   $options = [
 	 *     'slug' => (string) The slug
 	 *     'path' => (string) Path to the base folder (plugin/theme)
