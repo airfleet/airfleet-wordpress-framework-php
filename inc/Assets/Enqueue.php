@@ -74,6 +74,7 @@ class Enqueue implements Feature {
 				'editor' => true,
 				'frontend' => true,
 				'critical' => true,
+				'login' => true,
 			],
 			$options['enqueue'] ?? []
 		);
@@ -83,6 +84,7 @@ class Enqueue implements Feature {
 				'editor' => [],
 				'frontend' => [],
 				'critical' => [],
+				'login' => [],
 			],
 			$options['dependencies'] ?? []
 		);
@@ -93,6 +95,7 @@ class Enqueue implements Feature {
 		$this->enqueue_editor();
 		$this->enqueue_frontend();
 		$this->enqueue_critical();
+		$this->enqueue_login();
 	}
 
 	protected function enqueue_admin(): void {
@@ -145,6 +148,19 @@ class Enqueue implements Feature {
 				}
 				$this->enqueue_critical_style( 'frontend', 'critical' );
 				$this->enqueue_critical_script( 'frontend', 'critical' );
+			}
+		);
+	}
+
+	protected function enqueue_login(): void {
+		add_action(
+			'login_enqueue_scripts',
+			function () {
+				if ( ! $this->is_enqueue_enabled( 'login' ) ) {
+					return false;
+				}
+				$this->enqueue_style( 'login' );
+				$this->enqueue_script( 'login' );
 			}
 		);
 	}
