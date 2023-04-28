@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: "npm"
 
       - name: 🔨 Install release dependencies
         run: npm install -g release-it@^15 @release-it/keep-a-changelog@^3
@@ -28,7 +29,7 @@ jobs:
 
       - name: 📦 Release
         run: npx release-it $(cat .airfleet-release)
-          -VV
+          --verbose
           --ci
           --git.pushArgs='--follow-tags'
           --git.pushArgs='-o ci.skip'
