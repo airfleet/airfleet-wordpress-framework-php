@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Strings helper (Helpers\Strings) - convert between different cases
+
 ## [0.3.0] - 2023-04-13
 
 #### Added
