@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Helpers\Screen: fixed not detecting editor screen correctly
+
 ## [0.4.0] - 2023-06-28
 
 ### Added

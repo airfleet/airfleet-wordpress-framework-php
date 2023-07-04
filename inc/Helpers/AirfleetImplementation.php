@@ -9,7 +9,7 @@ class AirfleetImplementation {
 	 * @return boolean
 	 */
 	public function is_starter_theme(): bool {
-		return function_exists( 'af_field' );
+		return function_exists( '\af_field' );
 	}
 
 	/**
