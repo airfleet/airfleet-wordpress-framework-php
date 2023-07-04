@@ -37,7 +37,7 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function in_block_editor_admin(): bool {
-		if ( function_exists( '\get_current_screen' ) ) {
+		if ( function_exists( '\\get_current_screen' ) ) {
 			$screen = \get_current_screen();
 
 			if ( $screen instanceof \WP_Screen ) {
@@ -92,7 +92,7 @@ class ScreenImplementation {
 			$post_type = $typenow;
 		}
 
-		if ( empty( $post_type ) && function_exists( '\get_current_screen' ) ) {
+		if ( empty( $post_type ) && function_exists( '\\get_current_screen' ) ) {
 			$screen = \get_current_screen();
 
 			if ( $screen ) {
@@ -101,7 +101,7 @@ class ScreenImplementation {
 		}
 
 		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-		if ( empty( $post_type ) && isset( $_REQUEST['post'] ) && ! empty( $_REQUEST['post'] ) && function_exists( '\get_post_type' ) ) {
+		if ( empty( $post_type ) && isset( $_REQUEST['post'] ) && ! empty( $_REQUEST['post'] ) && function_exists( '\\get_post_type' ) ) {
 			// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
 			$get_post_type = \get_post_type( (int) $_REQUEST['post'] );
 			$post_type = $get_post_type;
