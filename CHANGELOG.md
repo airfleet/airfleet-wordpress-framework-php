@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Display::attributes and Display::data_attributes helpers
+
 ## [0.4.0] - 2023-06-28
 
 ### Added
