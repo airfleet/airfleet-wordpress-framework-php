@@ -9,7 +9,7 @@ class LocalJsonByLocationParam extends LocalJson {
 	protected string $param;
 	protected string $value;
 
-	public function __construct( string $json_path, string $param, string $value, $priority ) {
+	public function __construct( string $json_path, string $param, string $value, $priority = 10 ) {
 		parent::__construct( $json_path, $priority );
 		$this->param = $param;
 		$this->value = $value;

@@ -8,7 +8,7 @@ namespace Airfleet\Framework\Acf;
 class LocalJsonCustomTemplate extends LocalJson {
 	protected string $template_path;
 
-	public function __construct( string $json_path, string $template_path, $priority ) {
+	public function __construct( string $json_path, string $template_path, $priority = 10 ) {
 		parent::__construct( $json_path, $priority );
 		$this->template_path = $template_path;
 	}
