@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Helpers\Display::attributes and Helpers\Display::data_attributes - render attributes for HTML elements
+- Added Acf\LocalJsonByLocationParam - sync local JSON for groups that match a specific location rule
+- Added Acf\LocalJsonCustomTemplate - sync local JSON for a specific custom page template
+
 ## [0.4.0] - 2023-06-28
 
 ### Added
