@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Updated MenuTabsPage to support "tools" menu type
+
 ## [0.5.0] - 2023-07-14
 
 ### Added
