@@ -8,6 +8,7 @@ use Airfleet\Framework\Options\Pages\TabsPage;
 use Airfleet\Framework\Options\Menu\AirfleetMenuEntry;
 use Airfleet\Framework\Options\Menu\SettingsMenuEntry;
 use Airfleet\Framework\Options\Menu\MainMenuEntry;
+use Airfleet\Framework\Options\Menu\ToolsMenuEntry;
 
 class MenuTabsPage implements Feature {
 	protected Page $page;
@@ -35,6 +36,10 @@ class MenuTabsPage implements Feature {
 			return is_multisite() ? 'settings.php' : 'options-general.php';
 		}
 
+		if ( $menu_type === 'tools' ) {
+			return 'tools.php';
+		}
+
 		return 'admin.php';
 	}
 
@@ -56,6 +61,9 @@ class MenuTabsPage implements Feature {
 
 			case 'settings':
 				return new SettingsMenuEntry( $menu_args );
+
+			case 'tools':
+				return new ToolsMenuEntry( $menu_args );
 
 			case 'airfleet':
 			default:

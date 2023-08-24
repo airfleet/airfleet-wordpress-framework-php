@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Plugin\AcfSettingsOptionsSubPage - add ACF options sub-page under core "Settings" menu based on plugin config
+- Added Plugin\AcfToolsOptionsSubPage - add ACF options sub-page under core "Tools" menu based on plugin config
+
+### Changed
+
+- Updated MenuTabsPage to support "tools" menu type
+
 ## [0.5.0] - 2023-07-14
 
 ### Added
