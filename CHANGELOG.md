@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.0] - 2023-08-25
+
 ### Changed
 
 - BREAKING: updated AcfSettingsOptionsSubPage, AcfToolsOptionsSubPage, AcfAirfleetOptionsSubPage, AcfSettingsLink to use plugin slug instead of ACF generated slug
@@ -74,7 +76,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/0.6.0...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.0.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
@@ -88,3 +90,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [0.5.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.5.0
 
 [0.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.6.0
+
+[1.0.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.0.0
