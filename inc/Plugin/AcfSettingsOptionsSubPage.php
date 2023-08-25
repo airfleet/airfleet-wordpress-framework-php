@@ -22,7 +22,9 @@ class AcfSettingsOptionsSubPage extends SettingsOptionsSubPage {
 				[
 					'page_title' => $config['title'],
 					'menu_title' => $config['short_title'],
-				] + $options
+					'menu_slug' => $config['slug'],
+				],
+				$options
 			)
 		);
 	}

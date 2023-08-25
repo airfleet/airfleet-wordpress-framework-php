@@ -23,6 +23,6 @@ class AcfSettingsLink extends SettingsLink {
 	protected function settings_url( array $options ): string {
 		$base = $this->base( $options );
 
-		return admin_url( "{$base}?page=acf-options-{$options['short_slug']}" );
+		return admin_url( "{$base}?page={$options['slug']}" );
 	}
 }

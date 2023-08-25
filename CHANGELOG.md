@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- BREAKING: updated AcfSettingsOptionsSubPage, AcfToolsOptionsSubPage, AcfAirfleetOptionsSubPage, AcfSettingsLink to use plugin slug instead of ACF generated slug
+
 ## [0.6.0] - 2023-08-24
 
 ### Added
