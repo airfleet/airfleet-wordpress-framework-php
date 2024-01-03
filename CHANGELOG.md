@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Acf\LocalJsonCategorized - syncs ACF JSON from a custom path, using natural filenames and different sub-folders based on ACF type
+
 ## [1.0.0] - 2023-08-25
 
 ### Changed
@@ -78,17 +82,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.0.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
-
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
-
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
-
 [0.3.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.3.0
-
 [0.4.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.4.0
-
 [0.5.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.5.0
-
 [0.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.6.0
-
 [1.0.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.0.0
