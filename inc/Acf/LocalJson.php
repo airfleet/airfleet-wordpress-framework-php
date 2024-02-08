@@ -150,8 +150,9 @@ class LocalJson implements Feature {
 
 		foreach ( $field_groups as $json_file ) {
 			$field_group = json_decode( file_get_contents( $json_file ), true );
+			$is_valid_field_group = is_array( $field_group ) && isset( $field_group['key'] );
 
-			if ( is_array( $field_group ) && $field_group['key'] === $key ) {
+			if ( $is_valid_field_group && $field_group['key'] === $key ) {
 				$result[] = $json_file;
 			}
 		}
