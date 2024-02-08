@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Acf\LocalJsonCustomFilename - syncs ACF JSON from a custom path and saves to a specific filename
+- Added Acf\LocalJsonCustomFilenameByLocationParam - syncs ACF local JSON for groups with a specific param value in the location rules and saves to specific filename
+- Added Acf\LocalJsonCustomFilenameCustomTemplate - syncs ACF local JSON for custom page templates and saves to custom filename
+
+### Changed
+
+- Acf\LocalJson - now syncs deletion regardless of filename (previously only synced deletion if file was named `group_*.json`)
+
 ## [1.1.0] - 2024-01-03
 
 ### Added
@@ -91,5 +101,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [0.5.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.5.0
 [0.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.6.0
 [1.0.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.0.0
-
 [1.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.1.0

@@ -13,16 +13,19 @@ class LocalJsonCustomTemplate extends LocalJson {
 		$this->template_path = $template_path;
 	}
 
-	protected function is_local_group( array $data ): bool {
+	public static function is_local_group_for_custom_template( array $data, string $template_path ): bool {
 		$templates = LocalJson::get_location_values( $data, 'page_template' );
 
 		if ( ! $templates ) {
 			return false;
 		}
-		$normalized_path = $this->normalized_path( $this->template_path );
+		$get_normalized_path = function ( string $path ): string {
+			return str_replace( '\\', '/', $path );
+		};
+		$normalized_path = $get_normalized_path( $template_path );
 
 		foreach ( $templates as $template ) {
-			if ( $this->normalized_path( $template ) === $normalized_path ) {
+			if ( $get_normalized_path( $template ) === $normalized_path ) {
 				return true;
 			}
 		}
@@ -30,7 +33,7 @@ class LocalJsonCustomTemplate extends LocalJson {
 		return false;
 	}
 
-	protected function normalized_path( string $path ): string {
-		return str_replace( '\\', '/', $path );
+	protected function is_local_group( array $data ): bool {
+		return self::is_local_group_for_custom_template( $data, $this->template_path );
 	}
 }

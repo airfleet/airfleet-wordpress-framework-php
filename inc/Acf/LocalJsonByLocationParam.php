@@ -15,19 +15,23 @@ class LocalJsonByLocationParam extends LocalJson {
 		$this->value = $value;
 	}
 
-	protected function is_local_group( array $data ): bool {
-		$results = LocalJson::get_location_values( $data, $this->param );
+	public static function is_local_group_by_location_param( array $data, string $param, string $value ): bool {
+		$results = LocalJson::get_location_values( $data, $param );
 
 		if ( ! $results ) {
 			return false;
 		}
 
 		foreach ( $results as $result ) {
-			if ( $this->value === $result ) {
+			if ( $value === $result ) {
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	protected function is_local_group( array $data ): bool {
+		return self::is_local_group_by_location_param( $data, $this->param, $this->value );
 	}
 }
