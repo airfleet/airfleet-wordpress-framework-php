@@ -114,17 +114,9 @@ class LocalJson implements Feature {
 		if ( ! isset( $data['acf_field_group']['key'] ) ) {
 			return false;
 		}
-		$field_groups = glob( $this->json_path . '/*.json' );
+		$groups = $this->get_local_groups( $data['acf_field_group']['key'] );
 
-		foreach ( $field_groups as $json_file ) {
-			$field_group = json_decode( file_get_contents( $json_file ), true );
-
-			if ( is_array( $field_group ) && $field_group['key'] === $data['acf_field_group']['key'] ) {
-				return true;
-			}
-		}
-
-		return false;
+		return ! empty( $groups );
 	}
 
 	protected function setup_deleting(): void {
@@ -139,13 +131,31 @@ class LocalJson implements Feature {
 
 	protected function delete_json( array $field_group ): bool {
 		$key = str_replace( '__trashed', '', $field_group['key'] );
-		$file = trailingslashit( $this->json_path ) . $key . '.json';
+		$groups = $this->get_local_groups( $key );
+		$deleted = false;
 
-		if ( is_readable( $file ) ) {
-			unlink( $file );
-			return true;
+		foreach ( $groups as $file ) {
+			if ( is_readable( $file ) ) {
+				unlink( $file );
+				$deleted = true;
+			}
 		}
 
-		return false;
+		return $deleted;
+	}
+
+	protected function get_local_groups( string $key ): array {
+		$result = [];
+		$field_groups = glob( $this->json_path . '/*.json' );
+
+		foreach ( $field_groups as $json_file ) {
+			$field_group = json_decode( file_get_contents( $json_file ), true );
+
+			if ( is_array( $field_group ) && $field_group['key'] === $key ) {
+				$result[] = $json_file;
+			}
+		}
+
+		return $result;
 	}
 }
