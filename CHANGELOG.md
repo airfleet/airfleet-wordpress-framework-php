@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- ACF\LocalJson - fixed warning when reading non-ACF local JSON files
+
 ## [1.2.0] - 2024-02-08
 
 ### Added
@@ -104,5 +108,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [0.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.6.0
 [1.0.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.0.0
 [1.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.1.0
-
 [1.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.0
