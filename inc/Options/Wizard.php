@@ -87,6 +87,10 @@ class Wizard {
 				return new Fields\UrlField( $id, $title, $args_without_type );
 			case 'encrypted_password':
 				return new Fields\EncrypytedPasswordField( $id, $title, $args_without_type );
+			case 'hidden':
+				return new Fields\HiddenField( $id, $title, $args_without_type );
+			case 'media':
+				return new Fields\MediaField( $id, $title, $args_without_type );
 			default:
 				throw new \Exception( "Unrecognized type '{$args['type']}'" );
 		}

@@ -43,6 +43,10 @@ class Group {
 		return $this->name;
 	}
 
+	public function enqueue(): array {
+		return $this->sections;
+	}
+
 	public function render(): void {
 		settings_fields( $this->group );
 	}

@@ -33,4 +33,13 @@ class OptionsTab extends Tab {
 		submit_button();
 		echo '</form>';
 	}
+
+	public function enqueue(): void {
+		add_action(
+			'admin_enqueue_scripts',
+			function () {
+				$this->group->enqueue();
+			}
+		);
+	}
 }

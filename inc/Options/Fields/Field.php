@@ -228,4 +228,6 @@ abstract class Field {
 		// phpcs:ignore NeutronStandard.Functions.DisallowCallUserFunc.CallUserFunc
 		return call_user_func( $default_callback, $value );
 	}
+
+	public function enqueue(): void {}
 }

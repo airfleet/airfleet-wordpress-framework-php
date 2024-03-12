@@ -65,4 +65,8 @@ class Section {
 	public function fields(): array {
 		return $this->fields;
 	}
+
+	public function enqueue(): array {
+		return $this->fields;
+	}
 }
