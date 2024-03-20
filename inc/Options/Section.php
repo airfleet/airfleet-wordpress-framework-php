@@ -68,7 +68,7 @@ class Section {
 
 	public function enqueue(): void {
 		foreach ( $this->fields as $field ) {
-			$field->enque();
+			$field->enqueue();
 		}
 	}
 }
