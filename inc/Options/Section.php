@@ -66,7 +66,9 @@ class Section {
 		return $this->fields;
 	}
 
-	public function enqueue(): array {
-		return $this->fields;
+	public function enqueue(): void {
+		foreach ( $this->fields as $field ) {
+			$field->enque();
+		}
 	}
 }

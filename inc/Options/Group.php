@@ -43,8 +43,10 @@ class Group {
 		return $this->name;
 	}
 
-	public function enqueue(): array {
-		return $this->sections;
+	public function enqueue(): void {
+		foreach ( $this->sections as $section ) {
+			$section->enqueue();
+		}
 	}
 
 	public function render(): void {
