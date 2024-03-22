@@ -14,9 +14,6 @@ class OptionsTab extends Tab {
 		parent::__construct( $id, $title );
 		$this->group = $group;
 		$this->page_id = $page_id;
-
-		// Just a temp solution
-		$this->enqueue();
 	}
 
 	public function register(): void {
@@ -26,6 +23,8 @@ class OptionsTab extends Tab {
 				$this->group->register( $this->page_id );
 			}
 		);
+
+		$this->enqueue();
 	}
 
 	public function render(): void {

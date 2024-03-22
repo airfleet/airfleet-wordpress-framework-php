@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      let mediaTypes = [];
+      let allowMime = [];
 
-      if (imageUpload.dataset.mediaTypes) {
-        mediaTypes = imageUpload.dataset.mediaTypes.split(",");
+      if (imageUpload.dataset.allowMime) {
+        allowMime = imageUpload.dataset.allowMime.split(",");
       }
 
       mediaUploader = wp.media({
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
           text: 'Choose Image'
         },
         library: {
-          type: mediaTypes
+          type: allowMime
         },
         multiple: false
       });
@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
       mediaUploader.on('select', () => {
         const attachment = mediaUploader.state().get('selection').first().toJSON();
 
-        const imageMime = mediaTypes.includes(attachment.mime);
+        const imageMime = allowMime.includes(attachment.mime);
         const rightImageSize = validateSizes(imageUpload, attachment);
 
-        if ((mediaTypes.length === 0 || imageMime) && rightImageSize.sizesOk) {
+        if ((allowMime.length === 0 || imageMime) && rightImageSize.sizesOk) {
           const imageId = imageUpload.id;
           const hiddenFieldId = `${imageId}_url`;
           const hiddenField = document.querySelector(`#${hiddenFieldId}`);
@@ -58,46 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
           imageUpload.src = attachment.url;
           hiddenField.value = attachment.url;
         } else {
-          const alertMessage = getAlertMessage(rightImageSize.sizes, imageUpload.dataset.mediaTypes);
-          alert(alertMessage);
+          alert(imageUpload.dataset.instructions);
         }
       });
 
       mediaUploader.open();
     });
-  }
-
-  function getAlertMessage(sizes, mediaTypesString) {
-    let sizesText = getSizesText(sizes);
-
-    if (mediaTypesString) {
-      mediaTypesString = ` And file types ${mediaTypesString}.`;
-    }
-
-    return `${sizesText}${mediaTypesString}`
-  }
-
-  function getSizesText(sizes) {
-    let sizesText = '';
-    const sizesTextIntro = 'Recommended image sizes:';
-
-    if (sizes.minWidth) {
-      sizesText = `${sizesText} Min width ${sizes.minWidth}px.`;
-    }
-
-    if (sizes.maxWidth) {
-      sizesText = `${sizesText} Max width ${sizes.maxWidth}px.`;
-    }
-
-    if (sizes.minHeight) {
-      sizesText = `${sizesText} Min height ${sizes.minHeight}px.`;
-    }
-
-    if (sizes.maxHeight) {
-      sizesText = `${sizesText} Max height ${sizes.maxHeight}px.`;
-    }
-
-    return sizesText !== '' ? `${sizesTextIntro}${sizesText}` : '';
   }
 
   function validateSizes(imageUpload, attachment) {
