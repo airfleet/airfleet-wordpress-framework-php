@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const minWidthOk = !minWidth || attachment.width >= minWidth;
     const maxWidthOk = !maxWidth || attachment.width <= maxWidth;
-    const minHeightOk = !minHeight || attachment.width >= minHeight;
-    const maxHeightOk = !maxHeight || attachment.width <= maxHeight;
+    const minHeightOk = !minHeight || attachment.height >= minHeight;
+    const maxHeightOk = !maxHeight || attachment.height <= maxHeight;
 
     return {
       sizesOk: minWidthOk && maxWidthOk && minHeightOk && maxHeightOk,
