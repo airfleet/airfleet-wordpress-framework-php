@@ -23,6 +23,8 @@ class OptionsTab extends Tab {
 				$this->group->register( $this->page_id );
 			}
 		);
+
+		$this->enqueue();
 	}
 
 	public function render(): void {
@@ -32,5 +34,14 @@ class OptionsTab extends Tab {
 		do_settings_sections( $this->page_id );
 		submit_button();
 		echo '</form>';
+	}
+
+	public function enqueue(): void {
+		add_action(
+			'admin_enqueue_scripts',
+			function () {
+				$this->group->enqueue();
+			}
+		);
 	}
 }
