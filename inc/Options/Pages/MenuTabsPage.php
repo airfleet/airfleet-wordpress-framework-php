@@ -33,7 +33,7 @@ class MenuTabsPage implements Feature {
 
 	protected function page_base( string $menu_type ): string {
 		if ( $menu_type === 'settings' ) {
-			return is_multisite() ? 'settings.php' : 'options-general.php';
+			return is_multisite() ? 'admin.php' : 'options-general.php';
 		}
 
 		if ( $menu_type === 'tools' ) {
