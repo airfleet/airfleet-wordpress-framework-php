@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Tab links for settings in Multi-Site mode
+
 ## [1.2.1] - 2024-02-08
 
 ### Fixed
