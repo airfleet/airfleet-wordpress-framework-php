@@ -35,6 +35,6 @@ class SettingsMenuEntry implements \Airfleet\Framework\Features\Feature {
 	}
 
 	protected function settings_page_slug(): string {
-		return is_multisite() ? 'settings.php' : 'options-general.php';
+		return 'options-general.php';
 	}
 }
