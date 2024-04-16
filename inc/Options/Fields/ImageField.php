@@ -2,7 +2,7 @@
 
 namespace Airfleet\Framework\Options\Fields;
 
-class MediaField extends Field {
+class ImageField extends Field {
 	public function __construct( string $id, string $title, array $args = [] ) {
 		parent::__construct( $id, $title, array_merge( [ 'type' => 'hidden' ], $args ) );
 	}
@@ -10,10 +10,11 @@ class MediaField extends Field {
 	public function enqueue(): void {
 		wp_enqueue_media();
 
-		$file_path = __DIR__ . '/../../../assets/scripts/MediaField.js';
-		$url_path  = str_replace( $_SERVER['DOCUMENT_ROOT'], '', $file_path );
+		$file_path = __DIR__ . '/../../../assets/scripts/ImageField.js';
+		$url_path  = $this->get_file_url( $file_path );
+		// $url_path  = str_replace( $_SERVER['DOCUMENT_ROOT'], '', $file_path );
 
-		wp_enqueue_script( 'media-field-script', $url_path, array(), null, true );
+		wp_enqueue_script( 'image-field-script', $url_path, array(), null, true );
 	}
 
 	protected function get_img_attributes( array $args, mixed $value ): array {
@@ -75,5 +76,12 @@ class MediaField extends Field {
 		}
 
 		return parent::default_validate( $value );
+	}
+
+	private function get_file_url( $file = __FILE__ ) {
+		$file_path = str_replace( "\\", "/", str_replace( str_replace( "/", "\\", WP_CONTENT_DIR ), "", $file ) );
+		if ( $file_path )
+			return content_url( $file_path );
+		return false;
 	}
 }
