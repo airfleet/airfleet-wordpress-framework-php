@@ -10,11 +10,11 @@ class ImageField extends Field {
 	public function enqueue(): void {
 		wp_enqueue_media();
 
-		$file_path = __DIR__ . '/../../../assets/scripts/ImageField.js';
-		$url_path  = $this->get_file_url( $file_path );
-		// $url_path  = str_replace( $_SERVER['DOCUMENT_ROOT'], '', $file_path );
+		$image_field_script_url = sprintf( '%svendor-scoped/airfleet/wordpress-framework/assets/scripts/ImageField.js', AIRFLEET_SIGNATURE_URL );
 
-		wp_enqueue_script( 'image-field-script', $url_path, array(), null, true );
+		if ( $this->url_exists( $image_field_script_url ) ) {
+			wp_enqueue_script( 'image-field-script', $image_field_script_url, array(), null, true );
+		}
 	}
 
 	protected function get_img_attributes( array $args, mixed $value ): array {
@@ -78,10 +78,9 @@ class ImageField extends Field {
 		return parent::default_validate( $value );
 	}
 
-	private function get_file_url( $file = __FILE__ ) {
-		$file_path = str_replace( "\\", "/", str_replace( str_replace( "/", "\\", WP_CONTENT_DIR ), "", $file ) );
-		if ( $file_path )
-			return content_url( $file_path );
-		return false;
+	private function url_exists( $url ): bool {
+		$headers = @get_headers( $url );
+
+		return $headers && str_contains( $headers[0], '200' );
 	}
 }
