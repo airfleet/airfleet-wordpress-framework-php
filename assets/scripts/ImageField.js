@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let allowMime = [];
 
-      if (imageUpload.dataset.allowMime) {
-        allowMime = imageUpload.dataset.allowMime.split(",");
+      if (imageUpload.dataset.mediaTypes) {
+        allowMime = imageUpload.dataset.mediaTypes.split(",");
       }
 
       mediaUploader = wp.media({
         title: 'Choose ' + imageUpload.alt,
         button: {
-          text: 'Choose Image'
+          text: 'Choose File'
         },
         library: {
           type: allowMime
