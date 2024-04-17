@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added `hidden` options field type (hidden input)
+- Added `image` options field type (file upload)
+
 ## [1.2.1] - 2024-02-08
 
 ### Fixed

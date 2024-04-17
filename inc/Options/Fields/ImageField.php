@@ -10,10 +10,8 @@ class ImageField extends Field {
 	public function enqueue(): void {
 		wp_enqueue_media();
 
-		$image_field_script_url = sprintf( '%svendor-scoped/airfleet/wordpress-framework/assets/scripts/ImageField.js', AIRFLEET_SIGNATURE_URL );
-
-		if ( $this->url_exists( $image_field_script_url ) ) {
-			wp_enqueue_script( 'image-field-script', $image_field_script_url, array(), null, true );
+		if ( ! empty( $this->get_js_file_url() ) ) {
+			wp_enqueue_script( 'image-field-script', $this->get_js_file_url(), array(), null, \true );
 		}
 	}
 
@@ -83,5 +81,17 @@ class ImageField extends Field {
 		$headers = @get_headers( $url );
 
 		return $headers && str_contains( $headers[0], '200' );
+	}
+
+	private function get_js_file_url(): string {
+		$plugin_base_url = plugin_dir_url( __FILE__ );
+		$fixed_url       = str_replace( 'inc/Options/Fields/', '', $plugin_base_url );
+		$file_url		 = $fixed_url . 'assets/scripts/ImageField.js';
+
+		if ( $this->url_exists( $file_url ) ) {
+			return $file_url;
+		}
+
+		return '';
 	}
 }
