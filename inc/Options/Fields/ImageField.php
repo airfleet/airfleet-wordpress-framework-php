@@ -30,6 +30,7 @@ class ImageField extends Field {
 			'name'              => $this->input_name(),
 			'id'                => $this->id,
 			'class'             => ! $disabled ? 'js-image-upload' : '',
+			'style' 			=> ! $disabled ? 'cursor: pointer;' : '',
 			'width'             => $args['min_width'] ?? 100,
 			'alt'               => $args['label'] ?? '',
 			'title'             => $args['title'] ?? '',
