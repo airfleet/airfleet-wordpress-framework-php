@@ -58,7 +58,33 @@ document.addEventListener('DOMContentLoaded', () => {
           imageUpload.src = attachment.url;
           hiddenField.value = attachment.url;
         } else {
-          alert(imageUpload.dataset.instructions);
+          let alertMessage = '';
+
+          if (allowMime.length !== 0 && !imageMime) {
+            alertMessage = `You must use one of the following file types: ${imageUpload.dataset.mediaTypes}. `
+          }
+
+          if (!rightImageSize.sizesOk) {
+            if (rightImageSize.sizes.minWidth && !rightImageSize.sizesOkList.minWidthOk) {
+              alertMessage = ` Min-width ${rightImageSize.sizes.minWidth}px.`
+            }
+
+            if (rightImageSize.sizes.maxWidth && !rightImageSize.sizesOkList.maxWidthOk) {
+              alertMessage = `${alertMessage} Max-width ${rightImageSize.sizes.maxWidth}px.`
+            }
+
+            if (rightImageSize.sizes.minHeight && !rightImageSize.sizesOkList.minHeightOk) {
+              alertMessage = `${alertMessage} Min-height ${rightImageSize.sizes.minHeight}px.`
+            }
+
+            if (rightImageSize.sizes.maxHeight && !rightImageSize.sizesOkList.maxHeightOk) {
+              alertMessage = `${alertMessage} Max-height ${rightImageSize.sizes.maxHeight}px.`
+            }
+
+            alertMessage = `Image size must be:${alertMessage}`
+          }
+
+          alert(alertMessage);
         }
       });
 
@@ -67,10 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function validateSizes(imageUpload, attachment) {
-    const minWidth = parseInt(imageUpload.dataset.minWidth);
-    const maxWidth = parseInt(imageUpload.dataset.maxWidth);
-    const minHeight = parseInt(imageUpload.dataset.minHeight);
-    const maxHeight = parseInt(imageUpload.dataset.maxHeight);
+    const minWidth = parseInt(imageUpload.dataset.minWidth) || false;
+    const maxWidth = parseInt(imageUpload.dataset.maxWidth) || false;
+    const minHeight = parseInt(imageUpload.dataset.minHeight) || false;
+    const maxHeight = parseInt(imageUpload.dataset.maxHeight) || false;
 
     const minWidthOk = !minWidth || attachment.width >= minWidth;
     const maxWidthOk = !maxWidth || attachment.width <= maxWidth;
@@ -79,6 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return {
       sizesOk: minWidthOk && maxWidthOk && minHeightOk && maxHeightOk,
+      sizesOkList: {
+        minWidthOk,
+        maxWidthOk,
+        minHeightOk,
+        maxHeightOk,
+      },
       sizes: {
         minWidth,
         maxWidth,
