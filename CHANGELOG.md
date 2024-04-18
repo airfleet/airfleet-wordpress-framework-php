@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added `hidden` options field type (hidden input)
+- Added `image` options field type (file upload)
+
 ## [1.2.2] - 2024-04-15
 
 ### Fixed
@@ -118,5 +123,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.0
 [1.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.1
-
 [1.2.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.2
