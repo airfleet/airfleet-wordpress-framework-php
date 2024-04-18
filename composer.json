@@ -21,8 +21,5 @@
     "allow-plugins": {
       "composer/installers": true
     }
-  },
-  "extra": {
-    "airfleet-release": "minor"
   }
 }
