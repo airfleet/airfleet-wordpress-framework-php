@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added `hidden` options field type (hidden input)
 - Added `image` options field type (file upload)
 
+## [1.2.2] - 2024-04-15
+
+### Fixed
+
+- Fixed options page not appearing under Settings menu and option tabs not working for multi-sites
+
 ## [1.2.1] - 2024-02-08
 
 ### Fixed
@@ -105,7 +111,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.2.1...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.2.2...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -116,5 +122,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.0.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.0.0
 [1.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.1.0
 [1.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.0
-
 [1.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.1
+[1.2.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.2
