@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Updated `description` field for `Section` to allow using links
+
 ## [1.3.0] - 2024-04-18
 
 ### Added
@@ -126,5 +130,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.0
 [1.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.1
 [1.2.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.2
-
 [1.3.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.3.0

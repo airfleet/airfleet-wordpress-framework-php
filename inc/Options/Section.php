@@ -57,6 +57,7 @@ class Section {
 			'br' => [],
 			'strong' => [],
 			'i' => [],
+			'a' => [ 'href' => [] ],
 		];
 
 		printf( '<p class="description">%s</p>', wp_kses( $this->description, $allowed ) );
