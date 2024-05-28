@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added `Options\Tabs\LazyOptionsTab` (pass a callable to get options `Group` that is only called when used)
+- Added `Options\Pages\LazyOptionsPage` (options page that uses `LazyOptionsTab`)
+
 ## [1.4.0] - 2024-04-22
 
 ### Changed
@@ -133,5 +138,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.1
 [1.2.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.2
 [1.3.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.3.0
-
 [1.4.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.4.0
