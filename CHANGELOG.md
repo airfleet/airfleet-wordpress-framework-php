@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Added `wysiwyg` options field type (wysiwyg input)
+
 ## [1.5.0] - 2024-05-28
 
 ### Added
