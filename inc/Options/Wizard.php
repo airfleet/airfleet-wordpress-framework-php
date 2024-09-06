@@ -91,6 +91,8 @@ class Wizard {
 				return new Fields\HiddenField( $id, $title, $args_without_type );
 			case 'image':
 				return new Fields\ImageField( $id, $title, $args_without_type );
+			case 'wysiwyg':
+				return new Fields\WysiwygField($id, $title, $args_without_type);
 			default:
 				throw new \Exception( "Unrecognized type '{$args['type']}'" );
 		}
