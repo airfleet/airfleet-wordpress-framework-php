@@ -57,6 +57,10 @@ class LocalJson implements Feature {
 				if ( $param === $rule['param'] && '==' === $rule['operator'] ) {
 					$templates[] = $rule['value'];
 				}
+				
+                if ( $param === $rule['param'] && str_ends_with($param, '_tab') ) {
+                    $templates[] = $rule['value'];
+                }
 			}
 		}
 
