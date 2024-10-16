@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Block/Component tab custom groups not saved to view folder
+
 ## [1.6.0] - 2024-09-06
 
 - Added `wysiwyg` options field type (wysiwyg input)
