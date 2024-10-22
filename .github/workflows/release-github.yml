@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.CI_WRITE_TOKEN }}
 
       - name: ⚙️ Setup Node
         uses: actions/setup-node@v3
@@ -32,6 +34,7 @@ jobs:
           --ci
           --git.pushArgs='--follow-tags'
           --git.pushArgs='-o ci.skip'
+          --git.commitMessage='Release ${version} [skip ci]'
           --no-npm.publish
           --github.release
           --plugins.@release-it/keep-a-changelog.filename=CHANGELOG.md
@@ -40,4 +43,4 @@ jobs:
           --plugins.@release-it/keep-a-changelog.addVersionUrl
           --plugins.@release-it/keep-a-changelog.head=main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CI_WRITE_TOKEN }}
