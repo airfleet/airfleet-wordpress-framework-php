@@ -15,8 +15,8 @@ class LocalJsonByLocationParam extends LocalJson {
 		$this->value = $value;
 	}
 
-	public static function is_local_group_by_location_param( array $data, string $param, string $value ): bool {
-		$results = LocalJson::get_location_values( $data, $param );
+	public static function is_local_group_by_location_param( array $data, string $param, string $value, array $operators = [ '==' ] ): bool {
+		$results = LocalJson::get_location_values( $data, $param, $operators );
 
 		if ( ! $results ) {
 			return false;

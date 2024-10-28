@@ -42,7 +42,7 @@ class LocalJson implements Feature {
 	 * @param string $param Param from which we want to get values (e.g. "block", "page_template")
 	 * @return array
 	 */
-	public static function get_location_values( array $data, string $param ): array {
+	public static function get_location_values( array $data, string $param, array $operators = [ '==' ] ): array {
 		if ( ! isset( $data['acf_field_group'] ) || ! isset( $data['acf_field_group']['location'] ) ) {
 			return [];
 		}
@@ -54,13 +54,9 @@ class LocalJson implements Feature {
 					continue;
 				}
 
-				if ( $param === $rule['param'] && '==' === $rule['operator'] ) {
+				if ( $param === $rule['param'] && ( in_array( $rule['operator'], $operators ) || empty( $operators ) ) ) {
 					$templates[] = $rule['value'];
 				}
-				
-                if ( $param === $rule['param'] && str_ends_with($param, '_tab') ) {
-                    $templates[] = $rule['value'];
-                }
 			}
 		}
 
