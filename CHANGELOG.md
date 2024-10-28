@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Fixed
+### Changed
 
-- Fixed Block/Component tab custom groups not saved to view folder
+- `LocalJsonByLocationParam` and `LocalJsonCustomFilenameByLocationParam` now accept optional argument to specify operators to match
 
 ## [1.6.0] - 2024-09-06
 
