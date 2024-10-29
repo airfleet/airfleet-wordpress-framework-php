@@ -8,11 +8,13 @@ namespace Airfleet\Framework\Acf;
 class LocalJsonByLocationParam extends LocalJson {
 	protected string $param;
 	protected string $value;
+	protected array $operators;
 
-	public function __construct( string $json_path, string $param, string $value, $priority = 10 ) {
+	public function __construct( string $json_path, string $param, string $value, array $operators = [ '==' ], $priority = 10 ) {
 		parent::__construct( $json_path, $priority );
 		$this->param = $param;
 		$this->value = $value;
+		$this->operators = $operators;
 	}
 
 	public static function is_local_group_by_location_param( array $data, string $param, string $value, array $operators = [ '==' ] ): bool {
@@ -32,6 +34,6 @@ class LocalJsonByLocationParam extends LocalJson {
 	}
 
 	protected function is_local_group( array $data ): bool {
-		return self::is_local_group_by_location_param( $data, $this->param, $this->value );
+		return self::is_local_group_by_location_param( $data, $this->param, $this->value, $this->operators );
 	}
 }
