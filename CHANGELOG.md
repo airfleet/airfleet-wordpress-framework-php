@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- `LocalJsonByLocationParam` and `LocalJsonCustomFilenameByLocationParam` now accept optional argument to specify operators to match
+
 ## [1.6.0] - 2024-09-06
 
 - Added `wysiwyg` options field type (wysiwyg input)
