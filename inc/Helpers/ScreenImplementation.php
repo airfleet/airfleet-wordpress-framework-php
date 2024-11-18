@@ -63,7 +63,7 @@ class ScreenImplementation {
 
 		$block_array = json_decode( $block, true );
 
-		if ( ! empty($block_array['id']) && strpos( $block_array['id'], 'block_' ) !== false ) {
+		if ( ! empty( $block_array['id'] ) && strpos( $block_array['id'], 'block_' ) !== false ) {
 			return true;
 		}
 
