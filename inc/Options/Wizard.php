@@ -95,7 +95,8 @@ class Wizard {
 				return new Fields\WysiwygField($id, $title, $args_without_type);
 			default:
 				$class_type = $args['type'] ?? '';
-				if ($class_type && class_exists($class_type) && is_subclass_of($class_type, Field::class)) {
+
+				if ( $class_type && class_exists( $class_type ) && is_subclass_of( $class_type, Field::class ) ) {
 					return new $class_type($id, $title, $args_without_type);
 				}
 
