@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Options `Wizard` now also supports `Field` object instances or custom class names to instance set in the `type` property
+
 ## [1.7.1] - 2024-11-18
 
 ### Fixed
@@ -157,11 +161,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.2.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.2.2
 [1.3.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.3.0
 [1.4.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.4.0
-
 [1.5.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.5.0
-
 [1.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.6.0
-
 [1.7.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.0
-
 [1.7.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.1

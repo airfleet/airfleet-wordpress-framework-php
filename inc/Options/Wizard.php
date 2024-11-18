@@ -41,7 +41,7 @@ class Wizard {
 		$result = [];
 
 		foreach ( $fields as $id => $field ) {
-			$result[ $id ] = self::create_field(
+			$result[ $id ] = $field instanceof Field ? $field : self::create_field(
 				array_merge(
 					[
 						'id' => $field['id'] ?? ( is_string( $id ) ? $id : self::field_id( $field ) ),
@@ -94,6 +94,12 @@ class Wizard {
 			case 'wysiwyg':
 				return new Fields\WysiwygField($id, $title, $args_without_type);
 			default:
+				$class_type = $args['type'] ?? '';
+
+				if ( $class_type && class_exists( $class_type ) && is_subclass_of( $class_type, Field::class ) ) {
+					return new $class_type($id, $title, $args_without_type);
+				}
+
 				throw new \Exception( "Unrecognized type '{$args['type']}'" );
 		}
 	}
