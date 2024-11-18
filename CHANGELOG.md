@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.7.1] - 2024-11-18
+
 ### Fixed
 
 - Fixed PHP warnings related to Screen helpers `in_block_editor_ajax()` and `in_block_editor()`
@@ -140,7 +142,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.7.0...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.7.1...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -161,3 +163,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.6.0
 
 [1.7.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.0
+
+[1.7.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.1
