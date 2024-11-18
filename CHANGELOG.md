@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-- Fixed php notices
+### Fixed
+
+- Fixed PHP warnings related to Screen helpers `in_block_editor_ajax()` and `in_block_editor()`
 
 ## [1.7.0] - 2024-10-30
 
