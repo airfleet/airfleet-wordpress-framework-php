@@ -55,6 +55,13 @@ class ScreenImplementation {
 	 */
 	public function in_block_editor_ajax(): bool {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$action = wp_unslash( $_REQUEST['action'] ?? false );
+
+		if ( $action === 'acf/ajax/fetch-block' ) {
+			return true;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$block = wp_unslash( $_REQUEST['block'] ?? false );
 
 		if ( ! $block ) {
@@ -64,6 +71,10 @@ class ScreenImplementation {
 		$block_array = json_decode( $block, true );
 
 		if ( ! empty( $block_array['id'] ) && strpos( $block_array['id'], 'block_' ) !== false ) {
+			return true;
+		}
+
+		if ( ! empty( $block_array['name'] ) ) {
 			return true;
 		}
 
