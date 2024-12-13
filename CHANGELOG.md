@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed screen detection utilities `in_block_editor_ajax`, `in_block_editor`, and `screen` (due to change in ACF or WP, `in_block_editor_ajax` was not detecting correctly)
+
 ## [1.8.0] - 2024-11-18
 
 ### Changed
@@ -167,5 +171,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.6.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.6.0
 [1.7.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.0
 [1.7.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.1
-
 [1.8.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.0
