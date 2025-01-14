@@ -20,7 +20,7 @@ class WysiwygField extends Field {
 		return array(
 			'name'     => $name,
 			'id'       => $this->id ?? '',
-			'required' => $args['required'] ?? false,
+			'required' => $this->is_required(),
 			'settings' => $settings,
 		);
 	}
@@ -28,7 +28,7 @@ class WysiwygField extends Field {
 	protected function default_validate( mixed $value ): bool {
 		$length = strlen( $value );
 
-		if ( isset( $this->args['required'] ) && $this->args['required'] && $length === 0 ) {
+		if ( $this->is_required() && $length === 0 ) {
 			$this->add_error( "{$this->title} is required." );
 
 			return false;

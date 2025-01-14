@@ -42,7 +42,7 @@ class ListField extends Field {
 					'name' => $this->input_name(),
 					'value' => esc_attr( $value ),
 					'checked' => $this->is_selected( $value, $selected_value ),
-					'required' => $type === 'radio' ? ( $args['required'] ?? false ) : false,
+					'required' => $type === 'radio' ? $this->is_required() : false,
 				]
 			),
 			$text,
