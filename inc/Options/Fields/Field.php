@@ -84,12 +84,13 @@ abstract class Field {
 	}
 
 	public function is_required(): bool {
-		if (!isset($this->args['required'])) {
-			return \true;
+		if ( ! isset( $this->args['required'] ) ) {
+			// If required flag is not set, then by default field is not required
+			return false;
 		}
-		if (\is_callable($this->args['required'])) {
+		if ( \is_callable( $this->args['required'] ) ) {
 			// phpcs:ignore NeutronStandard.Functions.DisallowCallUserFunc.CallUserFunc
-			return (bool) \call_user_func($this->args['required'], $this);
+			return (bool) \call_user_func( $this->args['required'], $this );
 		}
 		return (bool) $this->args['required'];
 	}
@@ -214,7 +215,7 @@ abstract class Field {
 	}
 
 	protected function add_error( string $message, string $error_id = '' ): void {
-		if ($this->is_visible() || $this->is_required()) {
+		if ( $this->is_visible() || $this->is_required() ) {
 			add_settings_error(
 				"{$this->group->name()}_errors",
 				$error_id ?: "{$this->id}_error",
