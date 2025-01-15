@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed required field validation when it is hidden (field is not visible but still required)
+
 ## [1.8.1] - 2024-12-13
 
 ### Fixed

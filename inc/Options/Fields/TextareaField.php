@@ -18,7 +18,7 @@ class TextareaField extends Field {
 			'name' => $this->input_name(),
 			'id' => $this->id,
 			'class' => ( $args['class'] ?? '' ) . ' large-text code',
-			'required' => $args['required'] ?? false,
+			'required' => $this->is_required(),
 			'disabled' => $args['disabled'] ?? false,
 			'readonly' => $args['readonly'] ?? false,
 			'placeholder' => $args['placeholder'] ?? false,
@@ -36,7 +36,7 @@ class TextareaField extends Field {
 	protected function default_validate( mixed $value ): bool {
 		$length = strlen( $value );
 
-		if ( isset( $this->args['required'] ) && $this->args['required'] && $length === 0 ) {
+		if ( $this->is_required() && $length === 0 ) {
 			$this->add_error( "{$this->title} is required." );
 
 			return false;

@@ -67,7 +67,7 @@ class ImageField extends Field {
 	}
 
 	protected function default_validate( mixed $value ): bool {
-		$required = isset( $this->args['required'] ) && $this->args['required'];
+		$required = $this->is_required();
 		if ( $required && ! $value ) {
 			$this->add_error( "{$this->title} is required." );
 

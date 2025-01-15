@@ -26,7 +26,7 @@ class TextField extends InputField {
 	protected function default_validate( mixed $value ): bool {
 		$length = strlen( $value );
 
-		if ( isset( $this->args['required'] ) && $this->args['required'] && $length === 0 ) {
+		if ( $this->is_required() && $length === 0 ) {
 			$this->add_error( "{$this->title} is required." );
 
 			return false;

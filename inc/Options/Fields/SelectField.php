@@ -38,7 +38,7 @@ class SelectField extends Field {
 			'name' => $this->input_name(),
 			'id' => $this->id,
 			'class' => $args['class'] ?? '',
-			'required' => $args['required'] ?? false,
+			'required' => $this->is_required(),
 			'disabled' => $args['disabled'] ?? false,
 			'multiple' => $args['multiple'] ?? false,
 		];

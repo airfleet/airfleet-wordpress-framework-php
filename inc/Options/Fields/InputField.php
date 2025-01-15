@@ -20,7 +20,7 @@ class InputField extends Field {
 			'id' => $this->id,
 			'class' => ( $args['class'] ?? '' ) . ' regular-text',
 			'value' => $value,
-			'required' => $args['required'] ?? false,
+			'required' => $this->is_required(),
 			'disabled' => $args['disabled'] ?? false,
 		];
 	}
