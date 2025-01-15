@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.8.2] - 2025-01-15
+
 ### Fixed
 
 - Fixed required field validation when it is hidden (field is not visible but still required)
@@ -158,7 +160,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.8.1...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.8.2...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -180,3 +182,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.8.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.0
 
 [1.8.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.1
+
+[1.8.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.2
