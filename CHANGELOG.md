@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- `Helpers\Screen`: added cache for `is_editing_acf` and `in_block_editor`
+
 ## [1.8.2] - 2025-01-15
 
 ### Fixed
@@ -180,7 +184,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.7.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.0
 [1.7.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.7.1
 [1.8.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.0
-
 [1.8.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.1
-
 [1.8.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.2
