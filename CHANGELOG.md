@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- `Screen::is_editing_acf`: added cache
+- `Helpers\Screen`: added cache for `is_editing_acf` and `in_block_editor`
 
 ## [1.8.2] - 2025-01-15
 

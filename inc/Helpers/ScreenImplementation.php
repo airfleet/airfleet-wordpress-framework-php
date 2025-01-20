@@ -28,7 +28,10 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function in_block_editor(): bool {
-		return self::in_block_editor_admin() || self::in_block_editor_ajax();
+		return $this->get_or_set_cache(
+			'airfleet_in_block_editor',
+			fn () => self::in_block_editor_admin() || self::in_block_editor_ajax()
+		);
 	}
 
 	/**
@@ -137,14 +140,20 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function is_editing_acf(): bool {
-		$cache_key = 'airfleet_is_editing_acf';
+		return $this->get_or_set_cache(
+			'airfleet_is_editing_acf',
+			fn () => self::post_type() === 'acf-field-group'
+		);
+	}
+
+	protected function get_or_set_cache( string $cache_key, callable $callback ) {
 		$cache_group = 'airfleet';
 		$cache = wp_cache_get( $cache_key, $cache_group );
 		$has_cache = $cache !== false && isset( $cache['result'] );
 
 		if ( ! $has_cache ) {
 			$cache = [
-				'result' => self::post_type() === 'acf-field-group',
+				'result' => $callback(),
 			];
 			wp_cache_set( $cache_key, $cache, $cache_group );
 		}
