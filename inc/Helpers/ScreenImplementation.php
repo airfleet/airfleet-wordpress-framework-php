@@ -137,6 +137,18 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function is_editing_acf(): bool {
-		return self::post_type() === 'acf-field-group';
+		$cache_key = 'airfleet_is_editing_acf';
+		$cache_group = 'airfleet';
+		$cache = wp_cache_get( $cache_key, $cache_group );
+		$has_cache = $cache !== false && isset( $cache['result'] );
+
+		if ( ! $has_cache ) {
+			$cache = [
+				'result' => self::post_type() === 'acf-field-group',
+			];
+			wp_cache_set( $cache_key, $cache, $cache_group );
+		}
+
+		return $cache['result'];
 	}
 }
