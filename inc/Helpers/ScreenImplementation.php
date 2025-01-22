@@ -140,10 +140,16 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function is_editing_acf(): bool {
-		return $this->get_or_set_cache(
-			'airfleet_is_editing_acf',
-			fn () => self::post_type() === 'acf-field-group'
-		);
+		global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
+
+		if ( ! $airfleet_is_editing_acf_check ) {
+			global $post_type_object;
+			$acf_post_type = is_object( $post_type_object ) ? $post_type_object->name : '';
+			$airfleet_is_editing_acf_result = ( $acf_post_type === 'acf-field-group' );
+			$airfleet_is_editing_acf_check = true;
+		}
+
+		return $airfleet_is_editing_acf_result;
 	}
 
 	protected function get_or_set_cache( string $cache_key, callable $callback ) {
