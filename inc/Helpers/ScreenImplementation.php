@@ -28,10 +28,16 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function in_block_editor(): bool {
-		return $this->get_or_set_cache(
-			'airfleet_in_block_editor',
-			fn () => self::in_block_editor_admin() || self::in_block_editor_ajax()
-		);
+		global $airfleet_in_block_editor_check, $airfleet_in_block_editor_result;
+
+		if ( ! $airfleet_in_block_editor_check ) {
+			$airfleet_in_block_editor_result = (
+				self::in_block_editor_admin() || self::in_block_editor_ajax()
+			);
+			$airfleet_in_block_editor_check = true;
+		}
+
+		return $airfleet_in_block_editor_result;
 	}
 
 	/**
@@ -40,15 +46,25 @@ class ScreenImplementation {
 	 * @return boolean
 	 */
 	public function in_block_editor_admin(): bool {
-		if ( function_exists( 'get_current_screen' ) ) {
-			$screen = get_current_screen();
+		global $airfleet_in_block_editor_admin_check, $airfleet_in_block_editor_admin_result;
 
-			if ( $screen instanceof \WP_Screen ) {
-				return $screen->is_block_editor();
-			}
+		if ( ! $airfleet_in_block_editor_admin_check ) {
+			$is_block_editor_screen = function () {
+				if ( function_exists( 'get_current_screen' ) ) {
+					$screen = get_current_screen();
+
+					if ( $screen instanceof \WP_Screen ) {
+						return $screen->is_block_editor();
+					}
+				}
+
+				return false;
+			};
+			$airfleet_in_block_editor_admin_result = $is_block_editor_screen();
+			$airfleet_in_block_editor_admin_check = true;
 		}
 
-		return false;
+		return $airfleet_in_block_editor_admin_result;
 	}
 
 	/**
@@ -150,20 +166,5 @@ class ScreenImplementation {
 		}
 
 		return $airfleet_is_editing_acf_result;
-	}
-
-	protected function get_or_set_cache( string $cache_key, callable $callback ) {
-		$cache_group = 'airfleet';
-		$cache = wp_cache_get( $cache_key, $cache_group );
-		$has_cache = $cache !== false && isset( $cache['result'] );
-
-		if ( ! $has_cache ) {
-			$cache = [
-				'result' => $callback(),
-			];
-			wp_cache_set( $cache_key, $cache, $cache_group );
-		}
-
-		return $cache['result'];
 	}
 }
