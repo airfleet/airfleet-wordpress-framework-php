@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.11.0] - 2025-01-22
+
 ### Added
 
 - `Helpers\String`: added utilities `kebabToPascal` and `kebabToTitle`
@@ -176,7 +178,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.10.0...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.11.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -200,3 +202,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.8.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.2
 [1.9.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.9.0
 [1.10.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.10.0
+
+[1.11.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.0
