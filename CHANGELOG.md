@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- `Helpers\Screen`: performance improvements for `is_editing_acf`, `in_block_editor`, and `in_block_editor_admin`
+
 ## [1.9.0] - 2025-01-20
 
 ### Changed
@@ -188,5 +192,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.8.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.0
 [1.8.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.1
 [1.8.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.2
-
 [1.9.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.9.0
