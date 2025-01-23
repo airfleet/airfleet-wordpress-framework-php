@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `Helpers\Screen`: Fixed `in_block_editor` and `in_block_editor_admin` which could give wrong results under certain circumstances
+
 ## [1.11.0] - 2025-01-22
 
 ### Added
@@ -202,5 +206,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.8.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.8.2
 [1.9.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.9.0
 [1.10.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.10.0
-
 [1.11.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.0

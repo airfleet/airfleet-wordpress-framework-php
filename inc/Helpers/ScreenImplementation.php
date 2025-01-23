@@ -57,6 +57,21 @@ class ScreenImplementation {
 						return $screen->is_block_editor();
 					}
 				}
+				$page = basename( $_SERVER['PHP_SELF'], '.php' );
+
+				switch ( $page ) {
+					case 'widgets-form-blocks':
+					case 'site-editor':
+					// ! For new & edit post pages, always assume it is using the editor
+					// even if possibly it might not be.
+					// The functions to detect the editor are not reliable when called
+					// early on and other workarounds tried also found not to be reliable
+					case 'post-new':
+					case 'post':
+						return true;
+					default:
+						return false;
+				}
 
 				return false;
 			};
