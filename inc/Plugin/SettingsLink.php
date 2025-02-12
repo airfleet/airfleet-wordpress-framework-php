@@ -47,7 +47,7 @@ class SettingsLink extends ActionLinks {
 
 	protected function base( array $options ): string {
 		if ( ! isset( $options['base'] ) || empty( $options['base'] ) ) {
-			return 'admin.php';
+			return 'options-general.php';
 		}
 
 		if ( is_callable( $options['base'] ) ) {

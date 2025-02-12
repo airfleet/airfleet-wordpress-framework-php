@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- `SettingsLink`: change default base url to options-general.php from admin.php
+
 ## [1.11.1] - 2025-01-23
 
 ### Fixed
