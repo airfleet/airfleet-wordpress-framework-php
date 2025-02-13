@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- `SettingsLink`: changed default base url to `options-general.php` from `admin.php`. This affects the settings link in the Plugins page for both core option pages and ACF option pages. This should make the URLs consistent with the menu entries.
+
 ## [1.11.1] - 2025-01-23
 
 ### Fixed
