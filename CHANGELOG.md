@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `Helpers\Screen`: Fixed `is_editing_acf` cause `Undefined array key ID` warnings while editing some blocks.
+
 ## [1.11.1] - 2025-01-23
 
 ### Fixed
