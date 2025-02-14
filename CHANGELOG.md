@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - `Helpers\Screen`: Fixed `is_editing_acf` cause `Undefined array key ID` warnings while editing some blocks.
 
+## [1.12.0] - 2025-02-13
+
+### Changed
+
+- `SettingsLink`: changed default base url to `options-general.php` from `admin.php`. This affects the settings link in the Plugins page for both core option pages and ACF option pages. This should make the URLs consistent with the menu entries.
+
 ## [1.11.1] - 2025-01-23
 
 ### Fixed
@@ -188,7 +194,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.11.1...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.12.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -215,3 +221,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.11.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.0
 
 [1.11.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.1
+
+[1.12.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.0
