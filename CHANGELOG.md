@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `Helpers\Screen`: Fixed `is_editing_acf` causing `Undefined array key ID` warnings while editing some blocks.
+
 ## [1.12.0] - 2025-02-13
 
 ### Changed
@@ -215,7 +219,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.9.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.9.0
 [1.10.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.10.0
 [1.11.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.0
-
 [1.11.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.1
-
 [1.12.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.0
