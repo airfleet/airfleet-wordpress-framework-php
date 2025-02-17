@@ -166,6 +166,22 @@ class ScreenImplementation {
 	}
 
     /**
+     * Determines if we are editing ACF fields.
+     *
+     * @return boolean
+     */
+    public function is_editing_acf() : bool {
+        global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
+
+        if ( ! $airfleet_is_editing_acf_check ) {
+            $airfleet_is_editing_acf_result = self::is_acf_fields_post_type();
+            $airfleet_is_editing_acf_check = true;
+        }
+
+        return $airfleet_is_editing_acf_result;
+    }
+
+    /**
      * Determine current post type is `acf-field-group` post type or not.
      *
      * @return bool
@@ -186,21 +202,5 @@ class ScreenImplementation {
         }
 
         return 'acf-field-group' === $post_type;
-    }
-
-    /**
-     * Determines if we are editing ACF fields.
-     *
-     * @return boolean
-     */
-    public function is_editing_acf() : bool {
-        global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
-
-        if ( ! $airfleet_is_editing_acf_check ) {
-            $airfleet_is_editing_acf_result = self::is_acf_fields_post_type();
-            $airfleet_is_editing_acf_check = true;
-        }
-
-        return $airfleet_is_editing_acf_result;
     }
 }
