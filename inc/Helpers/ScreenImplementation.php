@@ -165,42 +165,42 @@ class ScreenImplementation {
 		return $post_type;
 	}
 
-    /**
-     * Determines if we are editing ACF fields.
-     *
-     * @return boolean
-     */
-    public function is_editing_acf() : bool {
-        global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
+	/**
+	 * Determines if we are editing ACF fields.
+	 *
+	 * @return boolean
+	 */
+	public function is_editing_acf() : bool {
+		global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
 
-        if ( ! $airfleet_is_editing_acf_check ) {
-            $airfleet_is_editing_acf_result = self::is_acf_fields_post_type();
-            $airfleet_is_editing_acf_check = true;
-        }
+		if ( ! $airfleet_is_editing_acf_check ) {
+			$airfleet_is_editing_acf_result = self::is_acf_fields_post_type();
+			$airfleet_is_editing_acf_check = true;
+		}
 
-        return $airfleet_is_editing_acf_result;
-    }
+		return $airfleet_is_editing_acf_result;
+	}
 
-    /**
-     * Determine current post type is `acf-field-group` post type or not.
-     *
-     * @return bool
-     */
-    public function is_acf_fields_post_type() : bool {
-        $post_type = '';
+	/**
+	 * Determine current post type is `acf-field-group` post type or not.
+	 *
+	 * @return bool
+	 */
+	public function is_acf_fields_post_type() : bool {
+		$post_type = '';
 
-        // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-        if ( isset( $_REQUEST['post_type'] ) && ! empty( $_REQUEST['post_type'] ) ) {
-            // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-            $post_type = sanitize_key( $_REQUEST['post_type'] );
-        }
+		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_REQUEST['post_type'] ) && ! empty( $_REQUEST['post_type'] ) ) {
+			// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
+			$post_type = sanitize_key( $_REQUEST['post_type'] );
+		}
 
-        // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-        if ( empty( $post_type ) && ! empty( $_REQUEST['post'] ) && \function_exists( 'get_post_type' ) ) {
-            // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-            $post_type = \get_post_type( (int) $_REQUEST['post'] );
-        }
+		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
+		if ( empty( $post_type ) && ! empty( $_REQUEST['post'] ) && \function_exists( 'get_post_type' ) ) {
+			// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
+			$post_type = \get_post_type( (int) $_REQUEST['post'] );
+		}
 
-        return 'acf-field-group' === $post_type;
-    }
+		return 'acf-field-group' === $post_type;
+	}
 }
