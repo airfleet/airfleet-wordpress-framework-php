@@ -170,20 +170,19 @@ class ScreenImplementation {
      *
      * @return bool
      */
-    public function is_acf_fields_post_type() : bool
-    {
+    public function is_acf_fields_post_type() : bool {
         $post_type = '';
+
         // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-        if (isset($_REQUEST['post_type']) && !empty($_REQUEST['post_type'])) {
+        if ( isset( $_REQUEST['post_type'] ) && ! empty( $_REQUEST['post_type'] ) ) {
             // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-            $post_type = sanitize_key($_REQUEST['post_type']);
+            $post_type = sanitize_key( $_REQUEST['post_type'] );
         }
 
         // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-        if (empty($post_type) && isset($_REQUEST['post']) && !empty($_REQUEST['post']) && \function_exists('get_post_type')) {
+        if ( empty( $post_type ) && ! empty( $_REQUEST['post'] ) && \function_exists( 'get_post_type' ) ) {
             // phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-            $get_post_type = \get_post_type((int) $_REQUEST['post']);
-            $post_type = $get_post_type;
+            $post_type = \get_post_type( (int) $_REQUEST['post'] );
         }
 
         return 'acf-field-group' === $post_type;
@@ -194,13 +193,14 @@ class ScreenImplementation {
      *
      * @return boolean
      */
-    public function is_editing_acf() : bool
-    {
+    public function is_editing_acf() : bool {
         global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
-        if (!$airfleet_is_editing_acf_check) {
+
+        if ( ! $airfleet_is_editing_acf_check ) {
             $airfleet_is_editing_acf_result = self::is_acf_fields_post_type();
-            $airfleet_is_editing_acf_check = \true;
+            $airfleet_is_editing_acf_check = true;
         }
+
         return $airfleet_is_editing_acf_result;
     }
 }
