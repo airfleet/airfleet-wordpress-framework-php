@@ -170,7 +170,7 @@ class ScreenImplementation {
 	 *
 	 * @return boolean
 	 */
-	public function is_editing_acf() : bool {
+	public function is_editing_acf(): bool {
 		global $airfleet_is_editing_acf_check, $airfleet_is_editing_acf_result;
 
 		if ( ! $airfleet_is_editing_acf_check ) {
@@ -186,7 +186,7 @@ class ScreenImplementation {
 	 *
 	 * @return bool
 	 */
-	public function is_acf_fields_post_type() : bool {
+	public function is_acf_fields_post_type(): bool {
 		$post_type = '';
 
 		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
