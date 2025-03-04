@@ -1,6 +1,6 @@
 {
   "name": "@airfleet/wordpress-framework",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "description": "Airfleet WordPress framework",
   "scripts": {},
   "private": true,

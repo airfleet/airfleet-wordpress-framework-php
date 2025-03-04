@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.13.0] - 2025-03-04
+
 ### Added
 
 - Added `@wpengine.local` to `is_airfleet_email` list (affects `is_airfleet_user` function).
@@ -200,7 +202,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.12.1...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.13.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -229,3 +231,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.12.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.0
 
 [1.12.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.1
+
+[1.13.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.13.0
