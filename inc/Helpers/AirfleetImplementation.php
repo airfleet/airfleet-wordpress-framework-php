@@ -47,6 +47,7 @@ class AirfleetImplementation {
 			'@airfleet.dev',
 			'@codersclan.net',
 			'@flywheel.local',
+			'@wpengine.local',
 		];
 
 		return ! empty(

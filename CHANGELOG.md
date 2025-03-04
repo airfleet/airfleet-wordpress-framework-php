@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added `@wpengine.local` to `is_airfleet_email` list (affects `is_airfleet_user` function).
+
 ## [1.12.1] - 2025-02-17
 
 ### Fixed
