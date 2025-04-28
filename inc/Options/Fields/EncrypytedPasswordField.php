@@ -5,6 +5,7 @@ namespace Airfleet\Framework\Options\Fields;
 class EncrypytedPasswordField extends PasswordField {
 	protected string $encryption_key;
 	protected string $cipher_method = 'AES-256-CBC';
+	protected string $field_id = '';
 
 	public function __construct( string $id, string $title, array $args = [], $encryption_key = null ) {
 		parent::__construct(
@@ -18,6 +19,7 @@ class EncrypytedPasswordField extends PasswordField {
 				$args
 			)
 		);
+		$this->field_id = $id;
 		$fallback_encryption_key = '|EZi7!^(oRQ^?r|/W-X^S5jS]M,zaDw+G%zYb$9!8gN{u(i}4llyWK-9afD|Y|3W';
 		$this->encryption_key = $encryption_key ? $encryption_key : ( defined( 'SECURE_AUTH_KEY' ) ? \SECURE_AUTH_KEY : $fallback_encryption_key );
 	}
@@ -50,17 +52,33 @@ class EncrypytedPasswordField extends PasswordField {
 		return $decrypted ?: '';
 	}
 
-	public function before_save( mixed $value ): mixed {
-		return $this->encrypt( $value );
-	}
+	public function before_save(mixed $new_value, mixed $old_value): mixed {
+
+        // if old value is empty or user agreed to update the value.
+        if ( empty( $old_value ) || isset( $_REQUEST[ $this->field_id . '_acceptance' ] ) ) {
+            return $this->encrypt($new_value);
+        }
+
+        return $this->encrypt($old_value);
+    }
 
 	public function format( mixed $value ): mixed {
 		return $this->decrypt( $value );
 	}
 
 	// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-	protected function render_input( array $args, mixed $value ): void {
-		// ! Do not show value when editing field
-		parent::render_input( $args, '' );
-	}
+    protected function render_input(array $args, mixed $value): void {
+        // pust some asterisk in placeholder showcase old value.
+        if ( ! empty($value) ) {
+            $args['placeholder'] = '******************';
+        }
+
+        // ! Do not show value when editing field
+        parent::render_input($args, '');
+
+        // Show checkbox if field have old value.
+        if ( ! empty( $value ) ) {
+            \printf('<br><br><label for="%1$s_acceptance"><input type="checkbox" name="%1$s_acceptance" id="%1$s_acceptance" class="regular-text" value="1">By Checking this I agree to update the field value.</label>', $this->field_id);
+        }
+    }
 }

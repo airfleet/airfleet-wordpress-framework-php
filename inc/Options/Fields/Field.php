@@ -124,9 +124,9 @@ abstract class Field {
 		return $this->call_args_callback( 'sanitize', $value, [ $this, 'default_sanitize' ] );
 	}
 
-	public function before_save( mixed $value ): mixed {
-		return $value;
-	}
+	public function before_save(mixed $new_value, mixed $old_value): mixed {
+        return $new_value;
+    }
 
 	public function validate( mixed $value ): bool {
 		return $this->call_args_callback( 'validate', $value, [ $this, 'default_validate' ] );
