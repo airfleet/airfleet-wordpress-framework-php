@@ -55,6 +55,7 @@ class EncrypytedPasswordField extends PasswordField {
 	public function before_save(mixed $new_value, mixed $old_value): mixed {
 
         // if old value is empty or user agreed to update the value.
+		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
         if ( empty( $old_value ) || isset( $_REQUEST[ $this->field_id . '_acceptance' ] ) ) {
             return $this->encrypt($new_value);
         }
