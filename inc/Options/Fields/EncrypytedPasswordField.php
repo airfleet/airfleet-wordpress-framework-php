@@ -54,9 +54,9 @@ class EncrypytedPasswordField extends PasswordField {
 
 	public function before_save(mixed $new_value, mixed $old_value): mixed {
 
-        // if old value is empty or user agreed to update the value.
+        // if old value is empty or user wanted to change value.
 		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
-        if ( empty( $old_value ) || isset( $_REQUEST[ $this->field_id . '_acceptance' ] ) ) {
+        if ( empty( $old_value ) || ( isset( $_REQUEST[ $this->field_id . '_change' ] ) && '1' === $_REQUEST[ $this->field_id . '_change' ] ) ) {
             return $this->encrypt($new_value);
         }
 
@@ -72,6 +72,7 @@ class EncrypytedPasswordField extends PasswordField {
         // pust some asterisk in placeholder showcase old value.
         if ( ! empty($value) ) {
             $args['placeholder'] = '******************';
+            $args['disabled'] = 'disabled';
         }
 
         // ! Do not show value when editing field
@@ -79,7 +80,8 @@ class EncrypytedPasswordField extends PasswordField {
 
         // Show checkbox if field have old value.
         if ( ! empty( $value ) ) {
-            \printf('<br><br><label for="%1$s_acceptance"><input type="checkbox" name="%1$s_acceptance" id="%1$s_acceptance" class="regular-text" value="1">By Checking this I agree to update the field value.</label>', $this->field_id);
+            printf('<input type="hidden" name="%1$s_change" id="%1$s_change" value="0">', $this->field_id);
+            printf('<input type="button" class="button button-secondry" value="Remove Value" onclick="let fieldInput = document.getElementById(\'%1$s\'); fieldInput.removeAttribute(\'disabled\'); fieldInput.removeAttribute(\'placeholder\'); document.getElementById(\'%1$s_change\').value=\'1\';">', $this->field_id);
         }
     }
 }
