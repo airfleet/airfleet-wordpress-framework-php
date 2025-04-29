@@ -69,7 +69,7 @@ class EncrypytedPasswordField extends PasswordField {
 
 	// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
     protected function render_input(array $args, mixed $value): void {
-        // pust some asterisk in placeholder showcase old value.
+        // puts some asterisk in placeholder showcase old value.
         if ( ! empty($value) ) {
             $args['placeholder'] = '******************';
             $args['disabled'] = 'disabled';
