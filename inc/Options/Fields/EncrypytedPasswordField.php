@@ -8,17 +8,7 @@ class EncrypytedPasswordField extends PasswordField {
 	protected string $field_id = '';
 
 	public function __construct( string $id, string $title, array $args = [], $encryption_key = null ) {
-		parent::__construct(
-			$id,
-			$title,
-			array_merge(
-				[
-					'notice' => __( 'Value is not shown in the input after loading. Re-insert value before saving page.', 'airfleet' ),
-					'notice_type' => 'warning',
-				],
-				$args
-			)
-		);
+		parent::__construct( $id, $title, $args );
 		$this->field_id = $id;
 		$fallback_encryption_key = '|EZi7!^(oRQ^?r|/W-X^S5jS]M,zaDw+G%zYb$9!8gN{u(i}4llyWK-9afD|Y|3W';
 		$this->encryption_key = $encryption_key ? $encryption_key : ( defined( 'SECURE_AUTH_KEY' ) ? \SECURE_AUTH_KEY : $fallback_encryption_key );
@@ -81,7 +71,7 @@ class EncrypytedPasswordField extends PasswordField {
         // Show checkbox if field have old value.
         if ( ! empty( $value ) ) {
             printf('<input type="hidden" name="%1$s_change" id="%1$s_change" value="0">', $this->field_id);
-            printf('<input type="button" class="button button-secondry" value="Remove Value" onclick="let fieldInput = document.getElementById(\'%1$s\'); fieldInput.removeAttribute(\'disabled\'); fieldInput.removeAttribute(\'placeholder\'); document.getElementById(\'%1$s_change\').value=\'1\';">', $this->field_id);
+            printf('<input type="button" class="button button-secondry" style="margin-left: 5px;" value="Remove Value" onclick="let fieldInput = document.getElementById(\'%1$s\'); fieldInput.removeAttribute(\'disabled\'); fieldInput.removeAttribute(\'placeholder\'); document.getElementById(\'%1$s_change\').value=\'1\';">', $this->field_id);
         }
     }
 }
