@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.14.0] - 2025-05-06
+
 ### Added
 
 - Added Remove button in `Options\Fields\EncrypytedPasswordField` field to change value only if user want to update the value.
@@ -206,7 +208,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.13.0...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.14.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -237,3 +239,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.12.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.1
 
 [1.13.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.13.0
+
+[1.14.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.14.0
