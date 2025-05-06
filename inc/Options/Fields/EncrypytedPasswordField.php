@@ -5,19 +5,11 @@ namespace Airfleet\Framework\Options\Fields;
 class EncrypytedPasswordField extends PasswordField {
 	protected string $encryption_key;
 	protected string $cipher_method = 'AES-256-CBC';
+	protected string $field_id = '';
 
 	public function __construct( string $id, string $title, array $args = [], $encryption_key = null ) {
-		parent::__construct(
-			$id,
-			$title,
-			array_merge(
-				[
-					'notice' => __( 'Value is not shown in the input after loading. Re-insert value before saving page.', 'airfleet' ),
-					'notice_type' => 'warning',
-				],
-				$args
-			)
-		);
+		parent::__construct( $id, $title, $args );
+		$this->field_id = $id;
 		$fallback_encryption_key = '|EZi7!^(oRQ^?r|/W-X^S5jS]M,zaDw+G%zYb$9!8gN{u(i}4llyWK-9afD|Y|3W';
 		$this->encryption_key = $encryption_key ? $encryption_key : ( defined( 'SECURE_AUTH_KEY' ) ? \SECURE_AUTH_KEY : $fallback_encryption_key );
 	}
@@ -50,17 +42,36 @@ class EncrypytedPasswordField extends PasswordField {
 		return $decrypted ?: '';
 	}
 
-	public function before_save( mixed $value ): mixed {
-		return $this->encrypt( $value );
-	}
+	public function before_save(mixed $new_value, mixed $old_value): mixed {
+
+        // if old value is empty or user wanted to change value.
+		// phpcs:ignore: WordPress.Security.NonceVerification.Recommended
+        if ( empty( $old_value ) || ( isset( $_REQUEST[ $this->field_id . '_change' ] ) && '1' === $_REQUEST[ $this->field_id . '_change' ] ) ) {
+            return $this->encrypt($new_value);
+        }
+
+        return $this->encrypt($old_value);
+    }
 
 	public function format( mixed $value ): mixed {
 		return $this->decrypt( $value );
 	}
 
 	// phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
-	protected function render_input( array $args, mixed $value ): void {
-		// ! Do not show value when editing field
-		parent::render_input( $args, '' );
-	}
+    protected function render_input(array $args, mixed $value): void {
+        // puts some asterisk in placeholder showcase old value.
+        if ( ! empty($value) ) {
+            $args['placeholder'] = '******************';
+            $args['disabled'] = 'disabled';
+        }
+
+        // ! Do not show value when editing field
+        parent::render_input($args, '');
+
+        // Show checkbox if field have old value.
+        if ( ! empty( $value ) ) {
+            printf('<input type="hidden" name="%1$s_change" id="%1$s_change" value="0">', $this->field_id);
+            printf('<input type="button" class="button button-secondry" style="margin-left: 5px;" value="Remove Value" onclick="let fieldInput = document.getElementById(\'%1$s\'); fieldInput.removeAttribute(\'disabled\'); fieldInput.removeAttribute(\'placeholder\'); document.getElementById(\'%1$s_change\').value=\'1\';">', $this->field_id);
+        }
+    }
 }

@@ -71,7 +71,7 @@ class Group {
 			$field = $this->field( $id );
 			$old_value = $this->value( $id );
 			$new_value = $field->sanitize( $value );
-			$save_value = $field->validate( $new_value ) ? $field->before_save( $new_value ) : $old_value;
+			$save_value = $field->validate( $new_value ) ? $field->before_save($new_value, $old_value) : $old_value;
 			$result[ $id ] = $save_value;
 		}
 
@@ -80,7 +80,7 @@ class Group {
 				$id = $field->id();
 				$old_value = $this->value( $id );
 				$new_value = $field->sanitize( $values[ $id ] ?? null );
-				$save_value = $field->validate( $new_value ) ? $field->before_save( $new_value ) : $old_value;
+				$save_value = $field->validate( $new_value ) ? $field->before_save($new_value, $old_value) : $old_value;
 				$result[ $id ] = $save_value;
 			}
 		}

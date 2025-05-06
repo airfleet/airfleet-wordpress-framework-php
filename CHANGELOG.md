@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Remove button in `Options\Fields\EncrypytedPasswordField` field to change value only if user want to update the value.
+
 ## [1.13.0] - 2025-03-04
 
 ### Added
