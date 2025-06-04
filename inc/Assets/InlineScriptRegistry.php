@@ -6,7 +6,7 @@ namespace Airfleet\Framework\Assets;
  * Registry for inline scripts.
  * Handles loading and rendering of inline scripts from files.
  */
-class ScriptRegistry {
+class InlineScriptRegistry {
     private static $instance = null;
     private $scripts = [];
 
@@ -23,19 +23,14 @@ class ScriptRegistry {
     }
 
     /**
-     * Add an inline script from a file.
+     * Add an inline script.
      *
      * @param string $handle Unique identifier for the script.
-     * @param string $file_path Absolute path to the script file.
+     * @param string $content The script content.
      * @param array $props Additional properties to add as data attributes.
      * @param array $deps Dependencies for this script.
      */
-    public function addScript($handle, $file_path, $props = [], $deps = []) {
-        if (!file_exists($file_path)) {
-            return;
-        }
-
-        $content = file_get_contents($file_path);
+    public function addScript($handle, $content, $props = [], $deps = []) {
         if (!$content) {
             return;
         }
@@ -45,6 +40,14 @@ class ScriptRegistry {
             'props' => $this->sanitizeProps($props),
             'deps' => (array) $deps
         ];
+
+        // Handle duplicate handles by appending a number
+        $base_handle = $handle;
+        $counter = 1;
+        while (isset($this->scripts[$handle])) {
+            $handle = $base_handle . '-' . $counter;
+            $counter++;
+        }
 
         $this->scripts[$handle] = $script;
     }
@@ -107,7 +110,7 @@ class ScriptRegistry {
         }
 
         printf(
-            '<script class="airfleet-script-registry" id="%s"%s>%s</script>',
+            '<script class="airfleet-script-registry" id="%s"%s>%s</script>' . "\n",
             esc_attr($handle),
             $props,
             $script['content']

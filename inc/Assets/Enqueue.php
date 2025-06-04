@@ -3,7 +3,7 @@
 namespace Airfleet\Framework\Assets;
 
 use Airfleet\Framework\Features\Feature;
-use Airfleet\Framework\Assets\ScriptRegistry;
+use Airfleet\Framework\Assets\InlineScriptRegistry;
 /**
  * Enqueue assets.
  */
@@ -99,7 +99,7 @@ class Enqueue implements Feature {
 		$this->critical_scripts_attributes = $critical_scripts_attributes ?? [];
 
 		// Initialize ScriptRegistry so we are able to hook into wp_head.
-        ScriptRegistry::getInstance();
+        InlineScriptRegistry::getInstance();
 	}
 
 	public function initialize(): void {
@@ -254,11 +254,20 @@ class Enqueue implements Feature {
 
 	protected function enqueue_critical_script( string $key = 'frontend', string $filename = 'critical' ): void {
 		$file_name = $filename ?: $key;
-		$file_path = $this->path . "/dist/assets/{$key}/scripts/{$file_name}.entry.js";
+		$file_path = "/dist/assets/{$key}/scripts/{$file_name}.entry.js";
 
-		ScriptRegistry::getInstance()->addScript(
+		if ( ! file_exists( $this->path . $file_path ) ) {
+			return;
+		}
+		$js = file_get_contents( $this->path . $file_path );
+
+		if ( ! $js ) {
+			return;
+		}
+
+		InlineScriptRegistry::getInstance()->addScript(
 			"{$this->slug}-critical-scripts",
-			$file_path,
+			$js,
 			$this->critical_scripts_attributes,
 			$this->dependencies( 'critical', 'scripts' )
 		);

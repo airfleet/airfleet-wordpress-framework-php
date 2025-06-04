@@ -3,6 +3,7 @@
 namespace Airfleet\Framework\Assets;
 
 use Airfleet\Framework\Features\Feature;
+use Airfleet\Framework\Assets\InlineScriptRegistry;
 
 /**
  * Add an inline script.
@@ -43,6 +44,14 @@ class InlineScript implements Feature {
 	 */
 	protected int $priority;
 
+
+	/**
+	 * Scripts attributes.
+	 *
+	 * @var array
+	 */
+	protected array $scripts_attributes;
+
 	/**
 	 * Constructor.
 	 *
@@ -59,6 +68,9 @@ class InlineScript implements Feature {
 		$this->script = $options['script'];
 		$this->position = $options['position'] ?? 'after';
 		$this->priority = $options['priority'] ?? 10;
+		$this->scripts_attributes = $options['scripts_attributes'] ?? [];
+
+		InlineScriptRegistry::getInstance();
 	}
 
 	public function initialize(): void {
@@ -70,7 +82,13 @@ class InlineScript implements Feature {
 				if ( ! $script ) {
 					return;
 				}
-				wp_add_inline_script( $this->handle, $script, $this->position );
+
+				InlineScriptRegistry::getInstance()->addScript(
+					$this->handle,
+					$script,
+					$this->scripts_attributes,
+					[]
+				);
 			},
 			$this->priority
 		);
