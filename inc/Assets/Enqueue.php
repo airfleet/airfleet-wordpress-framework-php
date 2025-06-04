@@ -3,7 +3,7 @@
 namespace Airfleet\Framework\Assets;
 
 use Airfleet\Framework\Features\Feature;
-
+use Airfleet\Framework\Assets\InlineScriptRegistry;
 /**
  * Enqueue assets.
  */
@@ -51,6 +51,13 @@ class Enqueue implements Feature {
 	protected array $dependencies;
 
 	/**
+	 * Critical scripts attributes.
+	 *
+	 * @var array
+	 */
+	protected array $critical_scripts_attributes;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param array $options Enqueue properties.
@@ -63,7 +70,7 @@ class Enqueue implements Feature {
 	 *     'dependencies' => (array) Dependencies for each asset (array of [ 'styles' => [], 'scripts' => [] ])
 	 *   ]
 	 */
-	public function __construct( array $options ) {
+	public function __construct( array $options, array $critical_scripts_attributes = [] ) {
 		$this->slug = $options['slug'];
 		$this->url = $options['url'];
 		$this->path = $options['path'];
@@ -88,6 +95,11 @@ class Enqueue implements Feature {
 			],
 			$options['dependencies'] ?? []
 		);
+
+		$this->critical_scripts_attributes = $critical_scripts_attributes ?? [];
+
+		// Initialize ScriptRegistry so we are able to hook into wp_head.
+        InlineScriptRegistry::getInstance();
 	}
 
 	public function initialize(): void {
@@ -252,7 +264,13 @@ class Enqueue implements Feature {
 		if ( ! $js ) {
 			return;
 		}
-		wp_add_inline_script( "{$this->slug}-critical-scripts", $js );
+
+		InlineScriptRegistry::getInstance()->addScript(
+			"{$this->slug}-critical-scripts",
+			$js,
+			$this->critical_scripts_attributes,
+			$this->dependencies( 'critical', 'scripts' )
+		);
 	}
 
 	protected function is_enqueue_enabled( string $key ): bool {

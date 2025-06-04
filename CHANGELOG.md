@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added `InlineScriptRegistry` for handling inline scripts, instead of using `wp_add_inline_script`
+- Added `scripts_attributes` to ScriptVariables along with other classes dealing with Variables
+
 ## [1.14.0] - 2025-05-06
 
 ### Added
