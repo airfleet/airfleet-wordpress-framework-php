@@ -1,7 +1,14 @@
+<?php
+
+namespace Airfleet\Framework\Assets;
+
+/**
+ * Registry for inline scripts.
+ * Handles loading and rendering of inline scripts from files.
+ */
 class ScriptRegistry {
     private static $instance = null;
     private $scripts = [];
-    private $critical_scripts = [];
 
     private function __construct() {
         add_action('wp_head', [$this, 'render'], 1);
@@ -15,19 +22,31 @@ class ScriptRegistry {
         return self::$instance;
     }
 
-    public function addScript($handle, $content, $props = [], $deps = [], $is_critical = false) {
+    /**
+     * Add an inline script from a file.
+     *
+     * @param string $handle Unique identifier for the script.
+     * @param string $file_path Absolute path to the script file.
+     * @param array $props Additional properties to add as data attributes.
+     * @param array $deps Dependencies for this script.
+     */
+    public function addScript($handle, $file_path, $props = [], $deps = []) {
+        if (!file_exists($file_path)) {
+            return;
+        }
+
+        $content = file_get_contents($file_path);
+        if (!$content) {
+            return;
+        }
+
         $script = [
             'content' => $content,
             'props' => $this->sanitizeProps($props),
-            'deps' => (array) $deps,
-            'is_critical' => $is_critical
+            'deps' => (array) $deps
         ];
 
-        if ($is_critical) {
-            $this->critical_scripts[$handle] = $script;
-        } else {
-            $this->scripts[$handle] = $script;
-        }
+        $this->scripts[$handle] = $script;
     }
 
     private function sanitizeProps($props) {
@@ -43,14 +62,7 @@ class ScriptRegistry {
     }
 
     public function render() {
-        // First render critical scripts
-        $this->renderScripts($this->critical_scripts);
-        // Then render regular scripts
-        $this->renderScripts($this->scripts);
-    }
-
-    private function renderScripts($scripts) {
-        $sorted = $this->resolveDependencies($scripts);
+        $sorted = $this->resolveDependencies($this->scripts);
         foreach ($sorted as $handle => $script) {
             $this->outputScript($handle, $script);
         }
@@ -95,7 +107,7 @@ class ScriptRegistry {
         }
 
         printf(
-            '<script id="%s"%s>%s</script>',
+            '<script class="airfleet-script-registry" id="%s"%s>%s</script>',
             esc_attr($handle),
             $props,
             $script['content']

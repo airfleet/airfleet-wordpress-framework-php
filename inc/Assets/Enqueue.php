@@ -3,7 +3,7 @@
 namespace Airfleet\Framework\Assets;
 
 use Airfleet\Framework\Features\Feature;
-
+use Airfleet\Framework\Assets\ScriptRegistry;
 /**
  * Enqueue assets.
  */
@@ -51,6 +51,13 @@ class Enqueue implements Feature {
 	protected array $dependencies;
 
 	/**
+	 * Critical scripts attributes.
+	 *
+	 * @var array
+	 */
+	protected array $critical_scripts_attributes;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param array $options Enqueue properties.
@@ -63,7 +70,7 @@ class Enqueue implements Feature {
 	 *     'dependencies' => (array) Dependencies for each asset (array of [ 'styles' => [], 'scripts' => [] ])
 	 *   ]
 	 */
-	public function __construct( array $options ) {
+	public function __construct( array $options, array $critical_scripts_attributes = [] ) {
 		$this->slug = $options['slug'];
 		$this->url = $options['url'];
 		$this->path = $options['path'];
@@ -88,6 +95,11 @@ class Enqueue implements Feature {
 			],
 			$options['dependencies'] ?? []
 		);
+
+		$this->critical_scripts_attributes = $critical_scripts_attributes ?? [];
+
+		// Initialize ScriptRegistry so we are able to hook into wp_head.
+        ScriptRegistry::getInstance();
 	}
 
 	public function initialize(): void {
@@ -214,15 +226,6 @@ class Enqueue implements Feature {
 			$this->version
 		);
 		wp_enqueue_style( "{$this->slug}-critical-styles" );
-
-		wp_register_script(
-			"{$this->slug}-critical-scripts",
-			'',
-			$this->dependencies( 'critical', 'styles' ),
-			$this->version,
-			false
-		);
-		wp_enqueue_script( "{$this->slug}-critical-scripts" );
 	}
 
 	protected function enqueue_critical_style( string $key = 'frontend', string $filename = 'critical' ): void {
@@ -242,17 +245,14 @@ class Enqueue implements Feature {
 
 	protected function enqueue_critical_script( string $key = 'frontend', string $filename = 'critical' ): void {
 		$file_name = $filename ?: $key;
-		$file_path = "/dist/assets/{$key}/scripts/{$file_name}.entry.js";
+		$file_path = $this->path . "/dist/assets/{$key}/scripts/{$file_name}.entry.js";
 
-		if ( ! file_exists( $this->path . $file_path ) ) {
-			return;
-		}
-		$js = file_get_contents( $this->path . $file_path );
-
-		if ( ! $js ) {
-			return;
-		}
-		wp_add_inline_script( "{$this->slug}-critical-scripts", $js );
+		ScriptRegistry::getInstance()->addScript(
+			"{$this->slug}-critical-scripts",
+			$file_path,
+			$this->critical_scripts_attributes,
+			$this->dependencies( 'critical', 'scripts' )
+		);
 	}
 
 	protected function is_enqueue_enabled( string $key ): bool {
