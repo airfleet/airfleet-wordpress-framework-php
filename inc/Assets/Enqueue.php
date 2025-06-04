@@ -226,6 +226,15 @@ class Enqueue implements Feature {
 			$this->version
 		);
 		wp_enqueue_style( "{$this->slug}-critical-styles" );
+
+		wp_register_script(
+			"{$this->slug}-critical-scripts",
+			'',
+			$this->dependencies( 'critical', 'styles' ),
+			$this->version,
+			false
+		);
+		wp_enqueue_script( "{$this->slug}-critical-scripts" );
 	}
 
 	protected function enqueue_critical_style( string $key = 'frontend', string $filename = 'critical' ): void {
