@@ -47,21 +47,21 @@ class InlineScriptRegistry {
      *
      * @param string $handle Unique identifier for the script.
      * @param string $content The script content.
-     * @param array $props Additional properties to add as data attributes.
+     * @param array $dataAttributes Additional properties to add as data attributes.
      * @param array $deps Dependencies for this script.
      */
-    public function addScript($handle, $content, $props = [], $deps = []) {
+    public function addScript($handle, $content, $dataAttributes = [], $deps = []) {
         if (!$content) {
             return;
         }
 
         $content = apply_filters('airfleet/framework/inline-script-registry/content', $content, $handle);
-        $props = apply_filters('airfleet/framework/inline-script-registry/props', $this->sanitizeProps($props), $handle);
+        $dataAttributes = apply_filters('airfleet/framework/inline-script-registry/data-attributes', $this->sanitizeDataAttributes($dataAttributes), $handle);
         $deps = apply_filters('airfleet/framework/inline-script-registry/deps', (array) $deps, $handle);
 
         $script = [
             'content' => $content,
-            'props' => $props,
+            'dataAttributes' => $dataAttributes,
             'deps' => $deps
         ];
 
@@ -77,9 +77,9 @@ class InlineScriptRegistry {
         $this->scripts[$handle] = $script;
     }
 
-    private function sanitizeProps($props) {
+    private function sanitizeDataAttributes($dataAttributes) {
         $sanitized = [];
-        foreach ($props as $key => $value) {
+        foreach ($dataAttributes as $key => $value) {
             $key = sanitize_key($key);
             $value = (string) $value;
             if ($key && $value) {
@@ -127,7 +127,7 @@ class InlineScriptRegistry {
 
     private function outputScript($handle, $script) {
         $props = '';
-        foreach ($script['props'] as $key => $value) {
+        foreach ($script['dataAttributes'] as $key => $value) {
             $props .= sprintf(' data-%s="%s"',
                 esc_attr($key),
                 esc_attr($value)

@@ -21,7 +21,7 @@ class FrontendVariables extends ScriptVariables {
 				'handle' => "{$options['slug']}-frontend-scripts",
 				'name' => $options['name'],
 				'variables' => $options['variables'],
-				'scripts_attributes' => $options['scripts_attributes'] ?? [],
+				'data_attributes' => $options['data_attributes'] ?? [],
 			]
 		);
 	}

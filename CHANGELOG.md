@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added `InlineScriptRegistry` for handling inline scripts, instead of using `wp_add_inline_script`
 - Added `scripts_attributes` to ScriptVariables along with other classes dealing with Variables
 - Added filter `airfleet/framework/inline-script-registry/content` to modify inline script content before output
-- Added filter `airfleet/framework/inline-script-registry/props` to modify script data attributes before output 
+- Added filter `airfleet/framework/inline-script-registry/data-attributes` to modify script data attributes before output 
 - Added filter `airfleet/framework/inline-script-registry/deps` to modify script dependencies before output
 
 ## [1.14.0] - 2025-05-06

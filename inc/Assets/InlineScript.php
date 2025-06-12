@@ -44,13 +44,12 @@ class InlineScript implements Feature {
 	 */
 	protected int $priority;
 
-
 	/**
-	 * Scripts attributes.
+	 * Data attributes for the script.
 	 *
 	 * @var array
 	 */
-	protected array $scripts_attributes;
+	protected array $data_attributes;
 
 	/**
 	 * Constructor.
@@ -61,6 +60,7 @@ class InlineScript implements Feature {
 	 *  script   => (string) The script (excluding <script> tag)
 	 *  position => (string) "before" or "after". Optional (default is "after")
 	 *  priority => (int) Priority for the action. Optional (default is 10)
+	 *  data_attributes => (array) Data attributes for the script tag. Optional (default is [])
 	 */
 	public function __construct( array $options ) {
 		$this->action = $options['action'];
@@ -68,7 +68,7 @@ class InlineScript implements Feature {
 		$this->script = $options['script'];
 		$this->position = $options['position'] ?? 'after';
 		$this->priority = $options['priority'] ?? 10;
-		$this->scripts_attributes = $options['scripts_attributes'] ?? [];
+		$this->data_attributes = $options['data_attributes'] ?? [];
 	}
 
 	public function initialize(): void {
@@ -87,7 +87,7 @@ class InlineScript implements Feature {
 				InlineScriptRegistry::getInstance()->addScript(
 					$this->handle,
 					$script,
-					$this->scripts_attributes,
+					$this->data_attributes,
 					[]
 				);
 			},
