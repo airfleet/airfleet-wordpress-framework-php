@@ -9,17 +9,37 @@ namespace Airfleet\Framework\Assets;
 class InlineScriptRegistry {
     private static $instance = null;
     private $scripts = [];
+    private $initialized = false;
 
-    private function __construct() {
-        add_action('wp_head', [$this, 'render'], 1);
-        add_action('admin_head', [$this, 'render'], 1);
-    }
+    /**
+     * Private constructor to prevent direct instantiation.
+     */
+    private function __construct() {}
 
+    /**
+     * Get the singleton instance.
+     *
+     * @return self
+     */
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new self();
         }
         return self::$instance;
+    }
+
+    /**
+     * Initialize the registry by setting up WordPress hooks.
+     */
+    public function initialize() {
+        if ($this->initialized) {
+            return;
+        }
+
+        add_action('wp_head', [$this, 'render'], 1);
+        add_action('admin_head', [$this, 'render'], 1);
+
+        $this->initialized = true;
     }
 
     /**
@@ -35,10 +55,14 @@ class InlineScriptRegistry {
             return;
         }
 
+        $content = apply_filters('airfleet/framework/inline-script-registry/content', $content, $handle);
+        $props = apply_filters('airfleet/framework/inline-script-registry/props', $this->sanitizeProps($props), $handle);
+        $deps = apply_filters('airfleet/framework/inline-script-registry/deps', (array) $deps, $handle);
+
         $script = [
             'content' => $content,
-            'props' => $this->sanitizeProps($props),
-            'deps' => (array) $deps
+            'props' => $props,
+            'deps' => $deps
         ];
 
         // Handle duplicate handles by appending a number
@@ -49,6 +73,7 @@ class InlineScriptRegistry {
             $counter++;
         }
 
+        $script = apply_filters('airfleet/framework/inline-script-registry/add-script', $script, $handle);
         $this->scripts[$handle] = $script;
     }
 

@@ -69,11 +69,12 @@ class InlineScript implements Feature {
 		$this->position = $options['position'] ?? 'after';
 		$this->priority = $options['priority'] ?? 10;
 		$this->scripts_attributes = $options['scripts_attributes'] ?? [];
-
-		InlineScriptRegistry::getInstance();
 	}
 
 	public function initialize(): void {
+		// Initialize ScriptRegistry first
+		InlineScriptRegistry::getInstance()->initialize();
+
 		add_action(
 			$this->action,
 			function () {

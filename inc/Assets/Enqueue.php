@@ -51,11 +51,11 @@ class Enqueue implements Feature {
 	protected array $dependencies;
 
 	/**
-	 * Critical scripts attributes.
+	 * Data attributes for assets.
 	 *
-	 * @var array
+	 * @var array Array of [ 'critical' => [ 'scripts' => [] ] ]
 	 */
-	protected array $critical_scripts_attributes;
+	protected array $data_attributes;
 
 	/**
 	 * Constructor.
@@ -68,9 +68,10 @@ class Enqueue implements Feature {
 	 *     'version'      => (string) The version.
 	 *     'enqueue'      => (array) Determine which assets will be enqueued (array of booleans or callbacks)
 	 *     'dependencies' => (array) Dependencies for each asset (array of [ 'styles' => [], 'scripts' => [] ])
+	 *     'data-attributes' => (array) Data attributes for assets (array of [ 'critical' => [ 'scripts' => [] ] ])
 	 *   ]
 	 */
-	public function __construct( array $options, array $critical_scripts_attributes = [] ) {
+	public function __construct( array $options ) {
 		$this->slug = $options['slug'];
 		$this->url = $options['url'];
 		$this->path = $options['path'];
@@ -96,13 +97,20 @@ class Enqueue implements Feature {
 			$options['dependencies'] ?? []
 		);
 
-		$this->critical_scripts_attributes = $critical_scripts_attributes ?? [];
-
-		// Initialize ScriptRegistry so we are able to hook into wp_head.
-        InlineScriptRegistry::getInstance();
+		$this->data_attributes = array_merge(
+			[
+				'critical' => [
+					'scripts' => [],
+				],
+			],
+			$options['data-attributes'] ?? []
+		);
 	}
 
 	public function initialize(): void {
+		// Initialize ScriptRegistry so we are able to hook into wp_head.
+		InlineScriptRegistry::getInstance()->initialize();
+
 		$this->enqueue_admin();
 		$this->enqueue_editor();
 		$this->enqueue_frontend();
@@ -268,7 +276,7 @@ class Enqueue implements Feature {
 		InlineScriptRegistry::getInstance()->addScript(
 			"{$this->slug}-critical-scripts",
 			$js,
-			$this->critical_scripts_attributes,
+			$this->data_attributes['critical']['scripts'] ?? [],
 			$this->dependencies( 'critical', 'scripts' )
 		);
 	}
