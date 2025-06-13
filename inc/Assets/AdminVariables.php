@@ -21,6 +21,7 @@ class AdminVariables extends ScriptVariables {
 				'handle' => "{$options['slug']}-admin-scripts",
 				'name' => $options['name'],
 				'variables' => $options['variables'],
+				'data_attributes' => $options['data_attributes'] ?? [],
 			]
 		);
 	}

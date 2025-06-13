@@ -3,6 +3,7 @@
 namespace Airfleet\Framework\Assets;
 
 use Airfleet\Framework\Features\Feature;
+use Airfleet\Framework\Assets\InlineScriptRegistry;
 
 /**
  * Add an inline script.
@@ -44,6 +45,13 @@ class InlineScript implements Feature {
 	protected int $priority;
 
 	/**
+	 * Data attributes for the script.
+	 *
+	 * @var array
+	 */
+	protected array $data_attributes;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param array $options Array with:
@@ -52,6 +60,7 @@ class InlineScript implements Feature {
 	 *  script   => (string) The script (excluding <script> tag)
 	 *  position => (string) "before" or "after". Optional (default is "after")
 	 *  priority => (int) Priority for the action. Optional (default is 10)
+	 *  data_attributes => (array) Data attributes for the script tag. Optional (default is [])
 	 */
 	public function __construct( array $options ) {
 		$this->action = $options['action'];
@@ -59,9 +68,13 @@ class InlineScript implements Feature {
 		$this->script = $options['script'];
 		$this->position = $options['position'] ?? 'after';
 		$this->priority = $options['priority'] ?? 10;
+		$this->data_attributes = $options['data_attributes'] ?? [];
 	}
 
 	public function initialize(): void {
+		// Initialize ScriptRegistry first
+		InlineScriptRegistry::getInstance()->initialize();
+
 		add_action(
 			$this->action,
 			function () {
@@ -70,7 +83,13 @@ class InlineScript implements Feature {
 				if ( ! $script ) {
 					return;
 				}
-				wp_add_inline_script( $this->handle, $script, $this->position );
+
+				InlineScriptRegistry::getInstance()->addScript(
+					$this->handle,
+					$script,
+					$this->data_attributes,
+					[]
+				);
 			},
 			$this->priority
 		);

@@ -39,6 +39,7 @@ class ScriptVariables extends InlineScript {
 				'script' => '',
 				'position' => 'before',
 				'priority' => $options['priority'] ?? 10,
+				'data_attributes' => $options['data_attributes'] ?? [],
 			]
 		);
 		$this->name = $options['name'];
