@@ -23,7 +23,6 @@ class CriticalVariables extends ScriptVariables {
 				'priority' => $options['priority'] ?? 1,
 				'name' => $options['name'],
 				'variables' => $options['variables'],
-				'data_attributes' => $options['data_attributes'] ?? [],
 			]
 		);
 	}

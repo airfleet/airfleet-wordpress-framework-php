@@ -21,7 +21,6 @@ class EditorVariables extends ScriptVariables {
 				'handle' => "{$options['slug']}-editor-scripts",
 				'name' => $options['name'],
 				'variables' => $options['variables'],
-				'data_attributes' => $options['data_attributes'] ?? [],
 			]
 		);
 	}
