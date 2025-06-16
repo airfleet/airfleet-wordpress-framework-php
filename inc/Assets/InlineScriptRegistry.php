@@ -82,7 +82,7 @@ class InlineScriptRegistry {
         foreach ($dataAttributes as $key => $value) {
             $key = sanitize_key($key);
             $value = (string) $value;
-            if ($key && $value) {
+            if ($key && $value !== null) {
                 $sanitized[$key] = $value;
             }
         }
