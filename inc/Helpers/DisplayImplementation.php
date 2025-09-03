@@ -54,11 +54,6 @@ class DisplayImplementation {
 					return $name;
 				}
 
-				if ( is_callable( $value ) ) {
-					// phpcs:ignore NeutronStandard.Functions.VariableFunctions.VariableFunction
-					$value = $value();
-				}
-
 				if ( is_array( $value ) || is_object( $value ) ) {
 					$value = wp_json_encode( $value );
 				}
