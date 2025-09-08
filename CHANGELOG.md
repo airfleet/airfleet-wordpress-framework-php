@@ -7,13 +7,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added object caching for ACF Local JSON through `Acf\LocalJson` classes
+- Added filter `airfleet/framework/acf/local_json_cache/enabled` to enable/disable cache for ACF Local JSON
+- Added filter `airfleet/framework/acf/local_json_cache/expiration` to set cache duration in seconds for ACF Local JSON
+- Added action `airfleet/framework/acf/local_json_cache/invalidate` to invalidate ACF Local JSON cache
+
 ## [1.15.0] - 2025-06-18
 
 ### Added
 
 - Added `InlineScriptRegistry` for handling inline scripts, instead of using `wp_add_inline_script`
 - Added filter `airfleet/framework/inline-script-registry/content` to modify inline script content before output
-- Added filter `airfleet/framework/inline-script-registry/data-attributes` to modify script data attributes before output 
+- Added filter `airfleet/framework/inline-script-registry/data-attributes` to modify script data attributes before output
 - Added filter `airfleet/framework/inline-script-registry/deps` to modify script dependencies before output
 
 ## [1.14.0] - 2025-05-06
@@ -244,11 +251,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.11.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.0
 [1.11.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.11.1
 [1.12.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.0
-
 [1.12.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.12.1
-
 [1.13.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.13.0
-
 [1.14.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.14.0
-
 [1.15.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.15.0
