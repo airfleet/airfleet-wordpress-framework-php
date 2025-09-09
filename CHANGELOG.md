@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Fixed
+### Changed
 
-- `Helpers\DisplayImplementation`: Fixed `attributes` causing `Uncaught ArgumentCountError` Fatal error while adding custom ID to blocks.
+- `Helpers\DisplayImplementation`: Added `is_string` check to `attributes()` to differentiate between regular string and callable functions as attribute value. 
 
 ## [1.15.0] - 2025-06-18
 
