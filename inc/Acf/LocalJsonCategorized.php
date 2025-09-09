@@ -68,17 +68,43 @@ class LocalJsonCategorized implements Feature {
 	 * @return void
 	 */
 	protected function setup_loading(): void {
+		if ( LocalJsonCacheSettings::is_enabled() ) {
+			$this->setup_loading_from_cache();
+		} else {
+			$this->setup_loading_uncached();
+		}
+	}
+
+	protected function setup_loading_from_cache(): void {
+		$paths = $this->loading_paths();
+
+		foreach ( $paths as $path ) {
+			$cache = new LocalJsonLoadFromCache( $path, [
+				'priority' => $this->priority,
+				'expiration' => LocalJsonCacheSettings::expiration(),
+			] );
+			$cache->initialize();
+		}
+	}
+
+	protected function setup_loading_uncached(): void {
 		add_filter(
 			'acf/json/load_paths',
 			function ( array $paths ): array {
-				foreach ( $this->json_types as $folder_name ) {
-					$paths[] = $this->json_path . '/' . $folder_name;
-				}
-
-				return $paths;
+				return array_merge( $paths, $this->loading_paths() );
 			},
 			$this->priority
 		);
+	}
+
+	protected function loading_paths(): array {
+		$paths = [];
+
+		foreach ( $this->json_types as $folder_name ) {
+			$paths[] = $this->json_path . '/' . $folder_name;
+		}
+
+		return $paths;
 	}
 
 	/**

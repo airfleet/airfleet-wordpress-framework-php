@@ -80,6 +80,22 @@ class LocalJson implements Feature {
 	 * @return void
 	 */
 	protected function setup_loading(): void {
+		if ( LocalJsonCacheSettings::is_enabled() ) {
+			$this->setup_loading_from_cache();
+		} else {
+			$this->setup_loading_uncached();
+		}
+	}
+
+	protected function setup_loading_from_cache(): void {
+		$cache = new LocalJsonLoadFromCache( $this->json_path, [
+			'priority' => $this->priority,
+			'expiration' => LocalJsonCacheSettings::expiration(),
+		] );
+		$cache->initialize();
+	}
+
+	protected function setup_loading_uncached(): void {
 		add_filter(
 			'acf/settings/load_json',
 			function ( array $paths ): array {
