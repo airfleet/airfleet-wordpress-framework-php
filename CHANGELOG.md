@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.16.0] - 2025-09-09
+
 ### Added
 
 - `Helpers\DisplayImplementation`: Added `is_string` check in `attributes()` function to differentiate between regular string and callable functions as attribute value. 
@@ -221,7 +223,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.15.0...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.16.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -256,3 +258,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.14.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.14.0
 
 [1.15.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.15.0
+
+[1.16.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.16.0
