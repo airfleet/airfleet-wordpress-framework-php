@@ -54,6 +54,10 @@ class DisplayImplementation {
 					return $name;
 				}
 
+				 if ( is_string($value) ) {
+					return $name . '="' . esc_attr($value) . '"';
+				}
+
 				if ( is_callable( $value ) ) {
 					// phpcs:ignore NeutronStandard.Functions.VariableFunctions.VariableFunction
 					$value = $value();
