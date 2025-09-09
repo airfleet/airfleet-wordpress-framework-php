@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-### Changed
+### Added
 
-- `Helpers\DisplayImplementation`: Added `is_string` check to `attributes()` to differentiate between regular string and callable functions as attribute value. 
+- `Helpers\DisplayImplementation`: Added `is_string` check in `attributes()` function to differentiate between regular string and callable functions as attribute value. 
 
 ## [1.15.0] - 2025-06-18
 
