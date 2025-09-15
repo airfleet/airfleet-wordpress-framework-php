@@ -112,14 +112,19 @@ class LocalJsonLoadFromCache implements Feature {
 	protected function setup_cache_invalidation(): void {
 		// Invalidate cache on field group save
 		add_action(
-			'acf/save_post',
-			function( $post_id ) {
-				if ( get_post_type( $post_id ) === 'acf-field-group' ) {
-					// Always invalidate on save because we may be adding a new file to the current path
-					$this->invalidate_cache();
+			'save_post',
+			function( $post_id, $post ) {
+				if ( $post->post_type === 'acf-field-group' ) {
+					$key = $post->post_name;
+
+					if ( $this->is_local_group( $key ) ) {
+						// Selectively invalidate the current path
+						$this->invalidate_cache();
+					}
 				}
 			},
-			$this->priority
+			$this->priority,
+			2
 		);
 
 		// Invalidate cache on field group deletion
