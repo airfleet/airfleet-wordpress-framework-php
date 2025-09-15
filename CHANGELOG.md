@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- `LocalJsonLoadFromCache`: Fixed automatic cache invalidation when saving fields group
+- `LocalJsonLoadFromCache`: Fixed automatic cache invalidation when saving field groups
 
 ## [1.17.0] - 2025-09-09
 
