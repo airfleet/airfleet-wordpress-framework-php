@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- `LocalJsonLoadFromCache`: Fixed automatic cache invalidation when saving field groups
+
 ## [1.17.0] - 2025-09-09
 
 ### Added
@@ -20,7 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- `Helpers\DisplayImplementation`: Added `is_string` check in `attributes()` function to differentiate between regular string and callable functions as attribute value. 
+- `Helpers\DisplayImplementation`: Added `is_string` check in `attributes()` function to differentiate between regular string and callable functions as attribute value.
 
 ## [1.15.0] - 2025-06-18
 
@@ -263,7 +267,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.13.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.13.0
 [1.14.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.14.0
 [1.15.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.15.0
-
 [1.16.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.16.0
-
 [1.17.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.17.0
