@@ -10,6 +10,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Added Environment helpers (`Helpers\Environment`) - determine environment (local, staging, production)
+- Added `CacheManager` utility class for working with cache
+- Added `Cacheable` trait to easily access global `CacheManager` instance
+- Added filter `airfleet/framework/cache/enabled` to enable/disable cache
+- Added filter `airfleet/framework/cache/expiration` to set cache duration in seconds (0 to not expire)
+- Added filter `airfleet/framework/cache/cache_dir_checks` to enable/disable caching directory modification checks
+- Added filter `airfleet/framework/cache/expiration_dir_check` to set cache duration for directory modification checks in seconds (0 to not expire)
+- Added filter `airfleet/framework/cache/manager` to set cache manager
+- Added action `airfleet/framework/cache/flush` to clear the cache
+- Added action `airfleet/framework/cache/hit` that is triggered whenever cache is hit, but only if WP_DEBUG is enabled
+- Added action `airfleet/framework/cache/miss` that is triggered whenever there is a cache miss, but only if WP_DEBUG is enabled
 
 ## [1.17.1] - 2025-09-15
 
