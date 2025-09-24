@@ -23,7 +23,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-- Refactored `LocalJsonLoadFromCache` to use `Cacheable` and improve cache invalidation when ACF Local JSON directory contents change
+- `LocalJsonLoadFromCache`: Refactored to use `Cacheable` and improve cache invalidation when ACF Local JSON directory contents change
+- `LocalJsonCacheSettings`: Automatically set default value for filter `airfleet/framework/cache/enabled` based on environment (enabled for all except local)
 
 ## [1.17.1] - 2025-09-15
 
