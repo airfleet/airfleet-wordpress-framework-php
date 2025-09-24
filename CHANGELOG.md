@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added action `airfleet/framework/cache/hit` that is triggered whenever cache is hit, but only if WP_DEBUG is enabled
 - Added action `airfleet/framework/cache/miss` that is triggered whenever there is a cache miss, but only if WP_DEBUG is enabled
 
+### Changed
+
+- Refactored `LocalJsonLoadFromCache` to use `Cacheable` and improve cache invalidation when ACF Local JSON directory contents change
+
 ## [1.17.1] - 2025-09-15
 
 ### Fixed
