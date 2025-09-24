@@ -6,6 +6,7 @@ namespace Airfleet\Framework\Cache;
  * Centralized cache manager for handling caching with WordPress object cache.
  */
 class CacheManager {
+	public const DEFAULT_EXPIRATION = -1;
 
 	/**
 	 * Whether caching is enabled.
@@ -117,12 +118,12 @@ class CacheManager {
 	 * @param int|null $expiration Cache expiration time in seconds.
 	 * @return bool
 	 */
-	public function set( string $scope, string $key, $data, int $expiration = -1 ): bool {
+	public function set( string $scope, string $key, $data, int $expiration = self::DEFAULT_EXPIRATION ): bool {
 		if ( ! $this->is_enabled() ) {
 			return false;
 		}
 		$cache_key = $this->get_cache_key( $scope, $key );
-		$expiration = $expiration === -1 ? $this->cache_expiration : $expiration;
+		$expiration = $expiration === self::DEFAULT_EXPIRATION ? $this->cache_expiration : $expiration;
 
 		$result = wp_cache_set( $cache_key, $data, $this->cache_group, $expiration );
 
@@ -160,7 +161,7 @@ class CacheManager {
 	 * @param int $expiration Cache expiration time in seconds (-1 = default).
 	 * @return mixed
 	 */
-	public function remember( string $scope, string $key, callable $generator, int $expiration = -1 ) {
+	public function remember( string $scope, string $key, callable $generator, int $expiration = self::DEFAULT_EXPIRATION ) {
 		// 1. Get data from cache
 		$cached_data = $this->get( $scope, $key );
 
@@ -189,7 +190,7 @@ class CacheManager {
 	 * @param int $expiration Cache expiration time in seconds (-1 = default).
 	 * @return mixed
 	 */
-	public function remember_file( string $scope, string $key, callable $generator, string $file_path, int $expiration = -1 ) {
+	public function remember_file( string $scope, string $key, callable $generator, string $file_path, int $expiration = self::DEFAULT_EXPIRATION ) {
 		// Include file modification time in cache key for automatic invalidation
 		$file_mtime = file_exists( $file_path ) ? filemtime( $file_path ) : 0;
 		$cache_key = $this->generate_key( $key, $file_mtime );
@@ -207,7 +208,7 @@ class CacheManager {
 	 * @param int $expiration Cache expiration time in seconds (-1 = default).
 	 * @return mixed
 	 */
-	public function remember_directory( string $scope, string $key, callable $generator, string $dir_path, int $expiration = -1 ) {
+	public function remember_directory( string $scope, string $key, callable $generator, string $dir_path, int $expiration = self::DEFAULT_EXPIRATION ) {
 		// Include directory modification key in cache key for automatic invalidation
 		$dir_mtime = $this->get_directory_modification_key( $dir_path );
 		$cache_key = $this->generate_key( $key, $dir_mtime );
