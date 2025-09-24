@@ -24,13 +24,13 @@ class CacheSetup implements Feature {
 		if ( $this->cache_manager === null ) {
 			// Delay cache manager instantiation until needed
 			$this->cache_manager = \apply_filters(
-				'airfleet/framework/cache/manager',
+				'airfleet/cache/manager',
 				new CacheManager( [
-					'enabled'              => apply_filters( 'airfleet/framework/cache/enabled', true ),
+					'enabled'              => apply_filters( 'airfleet/cache/enabled', true ),
 					'prefix'               => 'airfleet_',
-					'expiration'           => apply_filters( 'airfleet/framework/cache/expiration', DAY_IN_SECONDS ),
-					'cache_dir_checks'     => apply_filters( 'airfleet/framework/cache/cache_dir_checks', true ),
-					'expiration_dir_check' => apply_filters( 'airfleet/framework/cache/expiration_dir_check', HOUR_IN_SECONDS ),
+					'expiration'           => apply_filters( 'airfleet/cache/expiration', DAY_IN_SECONDS ),
+					'cache_dir_checks'     => apply_filters( 'airfleet/cache/cache_dir_checks', true ),
+					'expiration_dir_check' => apply_filters( 'airfleet/cache/expiration_dir_check', HOUR_IN_SECONDS ),
 					'group'                => 'airfleet_framework',
 				] )
 			);
@@ -55,7 +55,7 @@ class CacheSetup implements Feature {
 	 */
 	protected function register_cache_actions(): void {
 		// Add action to flush all caches
-		add_action( 'airfleet/framework/cache/flush', [ $this, 'flush_all_caches' ] );
+		add_action( 'airfleet/cache/flush', [ $this, 'flush_all_caches' ] );
 
 		// Flush cache when switching themes
 		add_action( 'switch_theme', [ $this, 'flush_all_caches' ] );

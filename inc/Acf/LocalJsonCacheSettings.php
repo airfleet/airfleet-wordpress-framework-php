@@ -13,8 +13,8 @@ class LocalJsonCacheSettings implements Feature {
 
 	public function initialize(): void {
 		$default_enabled = Environment::is_local() ? false : true;
-		$this->enabled = apply_filters( 'airfleet/framework/acf/local_json_cache/enabled', $default_enabled );
-		$this->expiration = apply_filters( 'airfleet/framework/acf/local_json_cache/expiration', DAY_IN_SECONDS );
+		$this->enabled = apply_filters( 'airfleet/acf/local_json_cache/enabled', $default_enabled );
+		$this->expiration = apply_filters( 'airfleet/acf/local_json_cache/expiration', DAY_IN_SECONDS );
 	}
 
 	protected static function instance(): LocalJsonCacheSettings {

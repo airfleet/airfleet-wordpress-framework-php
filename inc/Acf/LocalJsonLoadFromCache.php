@@ -160,7 +160,7 @@ class LocalJsonLoadFromCache implements Feature {
 
 		// Explicitly invalidate cache based on custom action
 		add_action(
-			'airfleet/framework/acf/local_json_cache/invalidate',
+			'airfleet/acf/local_json_cache/invalidate',
 			function() {
 				$this->invalidate_cache();
 

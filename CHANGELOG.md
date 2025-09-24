@@ -12,19 +12,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Environment helpers (`Helpers\Environment`) - determine environment (local, staging, production)
 - Added `CacheManager` utility class for working with cache
 - Added `Cacheable` trait to easily access global `CacheManager` instance
-- Added filter `airfleet/framework/cache/enabled` to enable/disable cache
-- Added filter `airfleet/framework/cache/expiration` to set cache duration in seconds (0 to not expire)
-- Added filter `airfleet/framework/cache/cache_dir_checks` to enable/disable caching directory modification checks
-- Added filter `airfleet/framework/cache/expiration_dir_check` to set cache duration for directory modification checks in seconds (0 to not expire)
-- Added filter `airfleet/framework/cache/manager` to set cache manager
-- Added action `airfleet/framework/cache/flush` to clear the cache
-- Added action `airfleet/framework/cache/hit` that is triggered whenever cache is hit, but only if WP_DEBUG is enabled
-- Added action `airfleet/framework/cache/miss` that is triggered whenever there is a cache miss, but only if WP_DEBUG is enabled
+- Added filter `airfleet/cache/enabled` to enable/disable cache
+- Added filter `airfleet/cache/expiration` to set cache duration in seconds (0 to not expire)
+- Added filter `airfleet/cache/cache_dir_checks` to enable/disable caching directory modification checks
+- Added filter `airfleet/cache/expiration_dir_check` to set cache duration for directory modification checks in seconds (0 to not expire)
+- Added filter `airfleet/cache/manager` to set cache manager
+- Added action `airfleet/cache/flush` to clear the cache
+- Added action `airfleet/cache/hit` that is triggered whenever cache is hit, but only if WP_DEBUG is enabled
+- Added action `airfleet/cache/miss` that is triggered whenever there is a cache miss, but only if WP_DEBUG is enabled
 
 ### Changed
 
 - `LocalJsonLoadFromCache`: Refactored to use `Cacheable` and improve cache invalidation when ACF Local JSON directory contents change
-- `LocalJsonCacheSettings`: Automatically set default value for filter `airfleet/framework/cache/enabled` based on environment (enabled for all except local)
+- `LocalJsonCacheSettings`: Automatically set default value for filter `airfleet/cache/enabled` based on environment (enabled for all except local)
+- Renamed filter `airfleet/framework/acf/local_json_cache/enabled` to `airfleet/acf/local_json_cache/enabled`
+- Renamed filter `airfleet/framework/acf/local_json_cache/expiration` to `airfleet/acf/local_json_cache/expiration`
+- Renamed action `airfleet/framework/acf/local_json_cache/invalidate` to `airfleet/acf/local_json_cache/invalidate`
 
 ## [1.17.1] - 2025-09-15
 

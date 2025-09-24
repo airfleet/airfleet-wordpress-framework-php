@@ -478,7 +478,7 @@ class CacheManager {
 	 */
 	protected function track_cache_hit( string $scope, string $key ): void {
 		if ( WP_DEBUG ) {
-			do_action( 'airfleet/framework/cache/hit', $scope, $key );
+			do_action( 'airfleet/cache/hit', $scope, $key );
 		}
 	}
 
@@ -491,7 +491,7 @@ class CacheManager {
 	 */
 	protected function track_cache_miss( string $scope, string $key ): void {
 		if ( WP_DEBUG ) {
-			do_action( 'airfleet/framework/cache/miss', $scope, $key );
+			do_action( 'airfleet/cache/miss', $scope, $key );
 		}
 	}
 }
