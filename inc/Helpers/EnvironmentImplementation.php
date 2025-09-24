@@ -5,6 +5,9 @@ namespace Airfleet\Framework\Helpers;
 class EnvironmentImplementation {
 	protected string $environment = '';
 
+	/**
+	 * Get the current environment type.
+	 */
 	public function get(): string {
 		if ( $this->environment === '' ) {
 			$this->environment = $this->determine_environment();
@@ -13,17 +16,23 @@ class EnvironmentImplementation {
 		return $this->environment;
 	}
 
+	/**
+	 * Check if the current environment is local.
+	 */
 	public function is_local(): bool {
 		return $this->get() === 'local';
 	}
 
+	/**
+	 * Determine the current environment.
+	 */
 	protected function determine_environment(): string {
 		if ( empty( $_SERVER['HTTP_HOST'] ) ) {
-			return '';
+			return 'unknown';
 		}
 
 		// ? Check by domain keyword
-		$domain = wp_parse_url( esc_url_raw( wp_unslash( $_SERVER['HTTP_HOST'] ) ), PHP_URL_HOST );
+		$domain = sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) );
 		$domains = [
 			'local' => [
 				'.local',
