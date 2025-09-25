@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.18.0] - 2025-09-25
+
 ### Added
 
 - Added Environment helpers (`Helpers\Environment`) - determine environment (local, staging, production)
@@ -266,7 +268,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.17.1...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.18.0...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -300,3 +302,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.16.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.16.0
 [1.17.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.17.0
 [1.17.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.17.1
+
+[1.18.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.0
