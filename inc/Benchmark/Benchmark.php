@@ -140,7 +140,6 @@ class Benchmark extends BasePluginFeature {
 			( defined( 'WP_CLI' ) && WP_CLI ) ||
 			( defined( 'DOING_CRON' ) && DOING_CRON ) ||
 			( defined( 'DOING_AJAX' ) && DOING_AJAX ) ||
-			( defined( 'REST_REQUEST' ) && REST_REQUEST ) ||
 			( defined( 'JSON_REQUEST' ) && JSON_REQUEST ) ||
 			( defined( 'IFRAME_REQUEST' ) && IFRAME_REQUEST ) ||
 			( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) ||
