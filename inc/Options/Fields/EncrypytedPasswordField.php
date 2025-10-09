@@ -11,7 +11,7 @@ class EncrypytedPasswordField extends PasswordField {
 		parent::__construct( $id, $title, $args );
 		$this->field_id = $id;
 		$fallback_encryption_key = '|EZi7!^(oRQ^?r|/W-X^S5jS]M,zaDw+G%zYb$9!8gN{u(i}4llyWK-9afD|Y|3W';
-		$this->encryption_key = $encryption_key ? $encryption_key : ( defined( 'SECURE_AUTH_KEY' ) ? \SECURE_AUTH_KEY : $fallback_encryption_key );
+		$this->encryption_key = $encryption_key ? $encryption_key : ( defined( '\\SECURE_AUTH_KEY' ) ? \SECURE_AUTH_KEY : $fallback_encryption_key );
 	}
 
 	public function encrypt( string $value ): string {

@@ -52,7 +52,7 @@ class Benchmark extends BasePluginFeature {
 					$this->write_comment( $comment );
 
 					// Optionally write to error_log
-					$should_log = (bool) \apply_filters( 'airfleet/benchmark/log_to_error_log', defined( 'WP_DEBUG' ) && WP_DEBUG );
+					$should_log = (bool) \apply_filters( 'airfleet/benchmark/log_to_error_log', defined( '\\WP_DEBUG' ) && \WP_DEBUG );
 
 					if ( $should_log ) {
 						error_log( $comment );
@@ -135,15 +135,15 @@ class Benchmark extends BasePluginFeature {
 
 		// 2. Do not output on non-HTML requests (AJAX, REST, XML-RPC, feeds, etc.).
 		if (
-			( defined( 'REST_REQUEST' ) && REST_REQUEST ) ||
-			( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) ||
-			( defined( 'WP_CLI' ) && WP_CLI ) ||
-			( defined( 'DOING_CRON' ) && DOING_CRON ) ||
-			( defined( 'DOING_AJAX' ) && DOING_AJAX ) ||
-			( defined( 'JSON_REQUEST' ) && JSON_REQUEST ) ||
-			( defined( 'IFRAME_REQUEST' ) && IFRAME_REQUEST ) ||
-			( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) ||
-			( defined( 'WC_API_REQUEST' ) && WC_API_REQUEST ) ||
+			( defined( '\\REST_REQUEST' ) && \REST_REQUEST ) ||
+			( defined( '\\XMLRPC_REQUEST' ) && \XMLRPC_REQUEST ) ||
+			( defined( '\\WP_CLI' ) && \WP_CLI ) ||
+			( defined( '\\DOING_CRON' ) && \DOING_CRON ) ||
+			( defined( '\\DOING_AJAX' ) && \DOING_AJAX ) ||
+			( defined( '\\JSON_REQUEST' ) && \JSON_REQUEST ) ||
+			( defined( '\\IFRAME_REQUEST' ) && \IFRAME_REQUEST ) ||
+			( defined( '\\XMLRPC_REQUEST' ) && \XMLRPC_REQUEST ) ||
+			( defined( '\\WC_API_REQUEST' ) && \WC_API_REQUEST ) ||
 			\wp_doing_ajax() ||
 			\is_feed() ||
 			\is_robots()
@@ -151,10 +151,8 @@ class Benchmark extends BasePluginFeature {
 			return false;
 		}
 
-		if ( function_exists( 'wp_is_json_request' ) && wp_is_json_request() ) {
+		if ( function_exists( '\\wp_is_json_request' ) && \wp_is_json_request() ) {
 			return false;
 		}
 
-		return true;
-	}
 }
