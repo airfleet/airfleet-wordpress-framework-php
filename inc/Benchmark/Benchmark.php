@@ -142,7 +142,6 @@ class Benchmark extends BasePluginFeature {
 			( defined( '\\DOING_AJAX' ) && \DOING_AJAX ) ||
 			( defined( '\\JSON_REQUEST' ) && \JSON_REQUEST ) ||
 			( defined( '\\IFRAME_REQUEST' ) && \IFRAME_REQUEST ) ||
-			( defined( '\\XMLRPC_REQUEST' ) && \XMLRPC_REQUEST ) ||
 			( defined( '\\WC_API_REQUEST' ) && \WC_API_REQUEST ) ||
 			\wp_doing_ajax() ||
 			\is_feed() ||
@@ -154,5 +153,5 @@ class Benchmark extends BasePluginFeature {
 		if ( function_exists( '\\wp_is_json_request' ) && \wp_is_json_request() ) {
 			return false;
 		}
-
+	}
 }
