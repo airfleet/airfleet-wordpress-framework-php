@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed `defined`, `function_exists`, and function calls to explicitly refer to non-namespace for better scoper integration
+
 ## [1.18.0] - 2025-09-25
 
 ### Added
@@ -302,5 +306,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.16.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.16.0
 [1.17.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.17.0
 [1.17.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.17.1
-
 [1.18.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.0
