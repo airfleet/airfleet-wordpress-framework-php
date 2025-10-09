@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.18.2] - 2025-10-09
+
 ### Fixed
 
 - Fixed unclosed bracket in Benchmark class
@@ -278,7 +280,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.18.1...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.18.2...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -314,3 +316,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.17.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.17.1
 [1.18.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.0
 [1.18.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.1
+
+[1.18.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.2
