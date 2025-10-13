@@ -153,5 +153,7 @@ class Benchmark extends BasePluginFeature {
 		if ( function_exists( '\\wp_is_json_request' ) && \wp_is_json_request() ) {
 			return false;
 		}
+
+		return true;
 	}
 }
