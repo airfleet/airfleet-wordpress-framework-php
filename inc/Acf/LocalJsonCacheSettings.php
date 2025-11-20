@@ -3,7 +3,6 @@
 namespace Airfleet\Framework\Acf;
 
 use Airfleet\Framework\Features\Feature;
-use Airfleet\Framework\Helpers\Environment;
 
 class LocalJsonCacheSettings implements Feature {
 	protected static ?LocalJsonCacheSettings $instance = null;
@@ -12,8 +11,7 @@ class LocalJsonCacheSettings implements Feature {
 	protected int $expiration;
 
 	public function initialize(): void {
-		$default_enabled = Environment::is_local() ? false : true;
-		$this->enabled = apply_filters( 'airfleet/acf/local_json_cache/enabled', $default_enabled );
+		$this->enabled = apply_filters( 'airfleet/acf/local_json_cache/enabled', false );
 		$this->expiration = apply_filters( 'airfleet/acf/local_json_cache/expiration', DAY_IN_SECONDS );
 	}
 

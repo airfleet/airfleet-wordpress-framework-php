@@ -80,11 +80,18 @@ class LocalJson implements Feature {
 	 * @return void
 	 */
 	protected function setup_loading(): void {
-		if ( LocalJsonCacheSettings::is_enabled() ) {
-			$this->setup_loading_from_cache();
-		} else {
-			$this->setup_loading_uncached();
-		}
+		// ? plugins_loaded action is needed because LocalJsonCacheSettings relies on filters to check if caching is enabled
+		// ? and we can only be sure all filters are applied after all plugins are loaded
+		add_action(
+			'plugins_loaded',
+			function () {
+				if ( LocalJsonCacheSettings::is_enabled() ) {
+					$this->setup_loading_from_cache();
+				} else {
+					$this->setup_loading_uncached();
+				}
+			}
+		);
 	}
 
 	protected function setup_loading_from_cache(): void {
