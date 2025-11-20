@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed `airfleet/acf/local_json_cache/enabled` to false by default
+- Only setup loading for `LocalJson` and `LocalJsonCategorized` after all plugins are loaded. This ensures filter `airfleet/acf/local_json_cache/enabled` is respected if another plugin sets it
+
 ## [1.18.3] - 2025-10-13
 
 ### Fixed
@@ -323,5 +328,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.18.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.0
 [1.18.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.1
 [1.18.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.2
-
 [1.18.3]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.3
