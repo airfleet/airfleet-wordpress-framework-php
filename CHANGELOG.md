@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed priority for loading `LocalJson` and `LocalJsonCategorized`. Fixes issue with not loading all field groups.
+
 ## [1.19.0] - 2025-11-20
 
 ### Changed
@@ -331,5 +335,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.18.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.1
 [1.18.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.2
 [1.18.3]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.18.3
-
 [1.19.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.19.0
