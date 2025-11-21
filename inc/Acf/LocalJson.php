@@ -80,17 +80,19 @@ class LocalJson implements Feature {
 	 * @return void
 	 */
 	protected function setup_loading(): void {
-		// ? plugins_loaded action is needed because LocalJsonCacheSettings relies on filters to check if caching is enabled
-		// ? and we can only be sure all filters are applied after all plugins are loaded
+		// ? Use init action to give the chance for all plugins/theme to load,
+		// ? because LocalJsonCacheSettings relies on filters to check if caching
+		// ? is enabled, but need to make sure this runs before ACF initializes
 		add_action(
-			'plugins_loaded',
+			'init',
 			function () {
 				if ( LocalJsonCacheSettings::is_enabled() ) {
 					$this->setup_loading_from_cache();
 				} else {
 					$this->setup_loading_uncached();
 				}
-			}
+			},
+			1
 		);
 	}
 
