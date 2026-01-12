@@ -35,6 +35,7 @@ jobs:
           --git.pushArgs='--follow-tags'
           --git.pushArgs='-o ci.skip'
           --git.commitMessage='Release ${version} [skip ci]'
+          --git.commitArgs='--no-verify'
           --no-npm.publish
           --github.release
           --plugins.@release-it/keep-a-changelog.filename=CHANGELOG.md
