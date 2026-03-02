@@ -9,6 +9,7 @@ namespace Airfleet\Framework\Assets;
 class InlineScriptRegistry {
     private static $instance = null;
     private $scripts = [];
+    private $rendered = [];
     private $initialized = false;
 
     /**
@@ -38,6 +39,7 @@ class InlineScriptRegistry {
 
         add_action('wp_head', [$this, 'render'], 1);
         add_action('admin_head', [$this, 'render'], 1);
+        add_filter('script_loader_tag', [$this, 'maybeAttachToEnqueuedScript'], 10, 2);
 
         $this->initialized = true;
     }
@@ -89,17 +91,91 @@ class InlineScriptRegistry {
         return $sanitized;
     }
 
+    /**
+     * Check if a script handle has a matching enqueued WordPress script.
+     *
+     * @param string $handle The script handle to check.
+     * @return bool
+     */
+    private function hasMatchingEnqueuedScript($handle) {
+        $wp_scripts = wp_scripts();
+        return isset($wp_scripts->registered[$handle]);
+    }
+
+    /**
+     * Filter callback for script_loader_tag.
+     * Attaches inline scripts to matching enqueued script tags.
+     *
+     * @param string $tag The script tag HTML.
+     * @param string $handle The script handle.
+     * @return string
+     */
+    public function maybeAttachToEnqueuedScript($tag, $handle) {
+        if (!isset($this->scripts[$handle]) || isset($this->rendered[$handle])) {
+            return $tag;
+        }
+
+        // Render any unrendered dependency inline scripts first.
+        $depsOutput = $this->renderDependencies($handle);
+        $script = $this->scripts[$handle];
+        $inlineTag = $this->buildScriptTag($handle, $script);
+        $this->rendered[$handle] = true;
+
+        return $depsOutput . $inlineTag . $tag;
+    }
+
+    /**
+     * Recursively render unrendered dependency inline scripts.
+     *
+     * @param string $handle The script handle whose deps should be rendered.
+     * @return string The concatenated HTML of rendered dependency scripts.
+     */
+    private function renderDependencies($handle) {
+        $output = '';
+        if (!isset($this->scripts[$handle])) {
+            return $output;
+        }
+
+        foreach ($this->scripts[$handle]['deps'] as $dep) {
+            if (isset($this->rendered[$dep]) || !isset($this->scripts[$dep])) {
+                continue;
+            }
+
+            // Recurse into the dependency's own deps first.
+            $output .= $this->renderDependencies($dep);
+            if (!isset($this->rendered[$dep])) {
+                $output .= $this->buildScriptTag($dep, $this->scripts[$dep]);
+                $this->rendered[$dep] = true;
+            }
+        }
+
+        return $output;
+    }
+
+    /**
+     * Render scripts that don't have a matching enqueued WordPress script.
+     * Scripts with a matching enqueued handle are skipped here and will be
+     * attached to their enqueued script tag via the script_loader_tag filter.
+     */
     public function render() {
         $sorted = $this->resolveDependencies($this->scripts);
         foreach ($sorted as $handle => $script) {
+            if (isset($this->rendered[$handle])) {
+                continue;
+            }
+
+            if ($this->hasMatchingEnqueuedScript($handle)) {
+                continue;
+            }
+
             $this->outputScript($handle, $script);
+            $this->rendered[$handle] = true;
         }
     }
 
     private function resolveDependencies($scripts) {
         $sorted = [];
         $visited = [];
-
         foreach ($scripts as $handle => $script) {
             if (!isset($visited[$handle])) {
                 $this->visitScript($handle, $scripts, $visited, $sorted);
@@ -125,8 +201,16 @@ class InlineScriptRegistry {
         $sorted[$handle] = $scripts[$handle];
     }
 
-    private function outputScript($handle, $script) {
+    /**
+     * Build the inline script tag HTML string.
+     *
+     * @param string $handle The script handle.
+     * @param array  $script The script data.
+     * @return string
+     */
+    private function buildScriptTag($handle, $script) {
         $props = '';
+
         foreach ($script['dataAttributes'] as $key => $value) {
             $props .= sprintf(' data-%s="%s"',
                 esc_attr($key),
@@ -134,11 +218,15 @@ class InlineScriptRegistry {
             );
         }
 
-        printf(
+        return sprintf(
             '<script class="airfleet-script-registry" id="%s"%s>%s</script>' . "\n",
             esc_attr($handle),
             $props,
             $script['content']
         );
+    }
+
+    private function outputScript($handle, $script) {
+        echo $this->buildScriptTag($handle, $script);
     }
 }

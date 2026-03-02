@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed `InlineScriptRegistry` to attach inline scripts to matching enqueued WordPress scripts via `script_loader_tag` filter for better integration
+
 ## [1.19.1] - 2025-11-21
 
 ### Fixed
