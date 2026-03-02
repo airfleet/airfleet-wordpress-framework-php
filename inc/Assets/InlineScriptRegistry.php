@@ -99,7 +99,7 @@ class InlineScriptRegistry {
      */
     private function hasMatchingEnqueuedScript($handle) {
         $wp_scripts = wp_scripts();
-        return isset($wp_scripts->registered[$handle]);
+        return in_array($handle, (array) $wp_scripts->queue, true);
     }
 
     /**
