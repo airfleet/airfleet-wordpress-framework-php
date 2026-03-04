@@ -36,8 +36,8 @@ class InlineScriptRegistry {
             return;
         }
 
-        add_action('wp_head', [$this, 'render'], 1);
-        add_action('admin_head', [$this, 'render'], 1);
+        add_action('wp_head', [$this, 'render'], PHP_INT_MIN);
+        add_action('admin_print_scripts', [$this, 'render'], PHP_INT_MIN);
 
         $this->initialized = true;
     }

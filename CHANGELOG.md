@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed `InlineScriptRegistry` rendering inline scripts after enqueued scripts on admin pages by hooking into `admin_print_scripts` (priority 1) instead of `admin_head`, ensuring inline variables are output before `print_head_scripts` (priority 20)
+
 ## [1.19.1] - 2025-11-21
 
 ### Fixed
