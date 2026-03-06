@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.19.3] - 2026-03-06
+
 ### Fixed
 
 - Fixed `InlineScriptRegistry` rendering inline scripts after enqueued scripts on frontend by hooking into `wp_print_scripts` (priority `PHP_INT_MIN`) instead of `wp_head`, ensuring inline variables are output before enqueued scripts within `print_head_scripts`
@@ -309,7 +311,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.19.2...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.19.3...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -352,3 +354,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.19.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.19.1
 
 [1.19.2]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.19.2
+
+[1.19.3]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.19.3
