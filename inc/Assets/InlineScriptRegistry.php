@@ -90,6 +90,9 @@ class InlineScriptRegistry {
     }
 
     public function render() {
+        remove_action('wp_print_scripts', [$this, 'render'], PHP_INT_MIN);
+        remove_action('admin_print_scripts', [$this, 'render'], PHP_INT_MIN);
+
         $sorted = $this->resolveDependencies($this->scripts);
         foreach ($sorted as $handle => $script) {
             $this->outputScript($handle, $script);
