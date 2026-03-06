@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Fixed `InlineScriptRegistry` rendering inline scripts after enqueued scripts on frontend by hooking into `wp_print_scripts` (priority `PHP_INT_MIN`) instead of `wp_head`, ensuring inline variables are output before `print_head_scripts` (priority 20)
+- Fixed `InlineScriptRegistry` rendering inline scripts after enqueued scripts on frontend by hooking into `wp_print_scripts` (priority `PHP_INT_MIN`) instead of `wp_head`, ensuring inline variables are output before enqueued scripts within `print_head_scripts`
 
 ## [1.19.2] - 2026-03-05
 
