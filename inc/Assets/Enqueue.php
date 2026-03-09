@@ -132,13 +132,23 @@ class Enqueue implements Feature {
 	}
 
 	protected function enqueue_editor(): void {
+		// Styles via enqueue_block_assets so they load inside the block editor iframe (API v3+).
+		add_action(
+			'enqueue_block_assets',
+			function () {
+				if ( ! \is_admin() || ! $this->is_enqueue_enabled( 'editor' ) ) {
+					return false;
+				}
+				$this->enqueue_style( 'editor' );
+			}
+		);
+		// Scripts stay on enqueue_block_editor_assets (parent page context).
 		add_action(
 			'enqueue_block_editor_assets',
 			function () {
 				if ( ! $this->is_enqueue_enabled( 'editor' ) ) {
 					return false;
 				}
-				$this->enqueue_style( 'editor' );
 				$this->enqueue_script( 'editor' );
 			}
 		);
@@ -168,6 +178,17 @@ class Enqueue implements Feature {
 				}
 				$this->enqueue_critical_style( 'frontend', 'critical' );
 				$this->enqueue_critical_script( 'frontend', 'critical' );
+			}
+		);
+		// Enqueue critical assets inside the block editor iframe (API v3+).
+		add_action(
+			'enqueue_block_assets',
+			function () {
+				if ( ! \is_admin() || ! $this->is_enqueue_enabled( 'critical' ) ) {
+					return false;
+				}
+				$this->enqueue_block_editor_critical_style( 'frontend', 'critical' );
+				$this->enqueue_block_editor_critical_script( 'frontend', 'critical' );
 			}
 		);
 	}
@@ -278,6 +299,37 @@ class Enqueue implements Feature {
 			$js,
 			$this->data_attributes['critical']['scripts'] ?? [],
 			$this->dependencies( 'critical', 'scripts' )
+		);
+	}
+
+	protected function enqueue_block_editor_critical_style( string $key = 'frontend', string $filename = 'critical' ): void {
+		$file_name = $filename ?: $key;
+		$file_path = "/dist/assets/{$key}/styles/{$file_name}.entry.css";
+
+		if ( ! file_exists( $this->path . $file_path ) ) {
+			return;
+		}
+		wp_enqueue_style(
+			"{$this->slug}-block-editor-critical-styles",
+			$this->url . $file_path,
+			$this->dependencies( 'critical', 'styles' ),
+			$this->version
+		);
+	}
+
+	protected function enqueue_block_editor_critical_script( string $key = 'frontend', string $filename = 'critical' ): void {
+		$file_name = $filename ?: $key;
+		$file_path = "/dist/assets/{$key}/scripts/{$file_name}.entry.js";
+
+		if ( ! file_exists( $this->path . $file_path ) ) {
+			return;
+		}
+		wp_enqueue_script(
+			"{$this->slug}-block-editor-critical-scripts",
+			$this->url . $file_path,
+			$this->dependencies( 'critical', 'scripts' ),
+			$this->version,
+			false
 		);
 	}
 

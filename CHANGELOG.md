@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+
+- Changed `Enqueue::enqueue_editor()` to use `enqueue_block_assets` for editor styles so they load inside the block editor iframe (Block API v3+), while editor scripts remain on `enqueue_block_editor_assets` (parent page context)
+- Changed `Enqueue::enqueue_critical()` to also enqueue critical styles and scripts inside the block editor iframe via `enqueue_block_assets`, ensuring critical assets (e.g. `window._airfleet.elements.core`) are available to view scripts rendered in the iframe
+
 ## [1.19.3] - 2026-03-06
 
 ### Fixed
