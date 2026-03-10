@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.20.1] - 2026-03-10
+
 ### Fixed
 
 - Fixed `InlineScriptRegistry` orphaning all inline scripts on block editor pages where `wp_print_scripts` fires before `admin_enqueue_scripts`. The `render()` method now skips early `wp_print_scripts` calls when the registry is empty, preserving the `admin_print_scripts` hook as a fallback, and uses a `$rendered` flag to prevent double output.
@@ -322,7 +324,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added Options utilities
 - Added Features classes
 
-[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.20.0...main
+[unreleased]: https://github.com/airfleet/airfleet-wordpress-framework-php/compare/1.20.1...main
 [0.1.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.1.0
 [0.2.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.0
 [0.2.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/0.2.1
@@ -369,3 +371,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.19.3]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.19.3
 
 [1.20.0]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.20.0
+
+[1.20.1]: https://github.com/airfleet/airfleet-wordpress-framework-php/releases/tag/1.20.1
