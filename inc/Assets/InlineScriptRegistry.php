@@ -10,6 +10,7 @@ class InlineScriptRegistry {
     private static $instance = null;
     private $scripts = [];
     private $initialized = false;
+    private $rendered = false;
 
     /**
      * Private constructor to prevent direct instantiation.
@@ -90,6 +91,21 @@ class InlineScriptRegistry {
     }
 
     public function render() {
+        if ($this->rendered) {
+            return;
+        }
+
+        $current = current_action();
+
+        // If wp_print_scripts fires before any scripts are registered
+        // (e.g. block editor page), only remove the current hook and
+        // let admin_print_scripts have a chance to render later.
+        if ($current === 'wp_print_scripts' && empty($this->scripts)) {
+            remove_action('wp_print_scripts', [$this, 'render'], PHP_INT_MIN);
+            return;
+        }
+
+        $this->rendered = true;
         remove_action('wp_print_scripts', [$this, 'render'], PHP_INT_MIN);
         remove_action('admin_print_scripts', [$this, 'render'], PHP_INT_MIN);
 
