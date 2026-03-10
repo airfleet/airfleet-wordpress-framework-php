@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed `InlineScriptRegistry` orphaning all inline scripts on block editor pages where `wp_print_scripts` fires before `admin_enqueue_scripts`. The `render()` method now skips early `wp_print_scripts` calls when the registry is empty, preserving the `admin_print_scripts` hook as a fallback, and uses a `$rendered` flag to prevent double output.
+
 ## [1.20.0] - 2026-03-09
 
 ### Changed
