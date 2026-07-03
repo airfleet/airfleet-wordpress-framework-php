@@ -11,17 +11,13 @@ jobs:
 
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.CI_WRITE_TOKEN }}
+          fetch-depth: 0
 
-      - name: ⚙️ Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: 🔨 Install release dependencies
-        run: npm install -g release-it@^15 @release-it/keep-a-changelog@^3
+      - name: ⚙️ Install bun
+        uses: oven-sh/setup-bun@v2
 
       - name: 🔨 Config git
         run: |
@@ -29,19 +25,6 @@ jobs:
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
       - name: 📦 Release
-        run: npx release-it $(cat .airfleet-release)
-          --verbose
-          --ci
-          --git.pushArgs='--follow-tags'
-          --git.pushArgs='-o ci.skip'
-          --git.commitMessage='Release ${version} [skip ci]'
-          --git.commitArgs='--no-verify'
-          --no-npm.publish
-          --github.release
-          --plugins.@release-it/keep-a-changelog.filename=CHANGELOG.md
-          --no-plugins.@release-it/keep-a-changelog.strictLatest
-          --plugins.@release-it/keep-a-changelog.addUnreleased
-          --plugins.@release-it/keep-a-changelog.addVersionUrl
-          --plugins.@release-it/keep-a-changelog.head=main
+        run: bunx --package @airfleet/wordpress-dev afwp release github --ci --verbose --replace-version
         env:
           GITHUB_TOKEN: ${{ secrets.CI_WRITE_TOKEN }}
